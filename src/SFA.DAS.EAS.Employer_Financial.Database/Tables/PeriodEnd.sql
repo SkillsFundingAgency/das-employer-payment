@@ -1,4 +1,4 @@
-﻿CREATE TABLE [employer_financial].[PeriodEnd]
+﻿CREATE TABLE [PeriodEnd]
 (
 	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	[PeriodEndId] nvarchar(20) NOT NULL,
@@ -12,4 +12,4 @@
 
 GO
 
-CREATE INDEX [IX_PeriodEnd_PeriodEndId] ON [employer_financial].[PeriodEnd] ([PeriodEndId])
+CREATE INDEX [IX_PeriodEnd_PeriodEndId] ON [PeriodEnd] ([PeriodEndId])

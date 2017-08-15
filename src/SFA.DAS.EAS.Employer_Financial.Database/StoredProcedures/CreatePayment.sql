@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [employer_financial].[CreatePayment]
+﻿CREATE PROCEDURE [CreatePayment]
 	@PaymentId as uniqueidentifier,
 	@Ukprn as BIGINT,
 	@ProviderName as VARCHAR(MAX),
@@ -29,7 +29,7 @@
 	@ApprenticeshipCourseStartDate as DATETIME
 as
 
-INSERT INTO [employer_financial].[PaymentMetaData]
+INSERT INTO [PaymentMetaData]
 			(ProviderName
 			,StandardCode
 			,FrameworkCode			
@@ -56,7 +56,7 @@ INSERT INTO [employer_financial].[PaymentMetaData]
 
 DECLARE @PaymentMetaDataId AS BIGINT = SCOPE_IDENTITY()
 
-INSERT INTO [employer_financial].[Payment]
+INSERT INTO [Payment]
            ([PaymentId]
            ,[Ukprn]		   
            ,[Uln]

@@ -7,11 +7,13 @@ namespace SFA.DAS.EAS.Application.Queries.FindAccountCoursePayments
 {
     public class FindAccountCoursePaymentsQueryValidator : IValidator<FindAccountCoursePaymentsQuery>
     {
-        private readonly IMembershipRepository _membershipRepository;
+        //private readonly IMembershipRepository _membershipRepository;
 
-        public FindAccountCoursePaymentsQueryValidator(IMembershipRepository membershipRepository)
+        public FindAccountCoursePaymentsQueryValidator(
+            //IMembershipRepository membershipRepository
+            )
         {
-            _membershipRepository = membershipRepository;
+            //_membershipRepository = membershipRepository;
         }
 
         public ValidationResult Validate(FindAccountCoursePaymentsQuery item)
@@ -56,13 +58,13 @@ namespace SFA.DAS.EAS.Application.Queries.FindAccountCoursePayments
             if (!validationResult.IsValid())
                 return validationResult;
 
-            var memberView = await _membershipRepository.GetCaller(item.HashedAccountId, item.ExternalUserId);
+            //var memberView = await _membershipRepository.GetCaller(item.HashedAccountId, item.ExternalUserId);
 
-            if (memberView != null)
-                return validationResult;
+            //if (memberView != null)
+            //    return validationResult;
 
-            validationResult.AddError("Membership", "User is not a member of this Account");
-            validationResult.IsUnauthorized = true;
+            //validationResult.AddError("Membership", "User is not a member of this Account");
+            //validationResult.IsUnauthorized = true;
 
             return validationResult;
         }

@@ -17,7 +17,6 @@ using SFA.DAS.EAS.Domain.Models.Transaction;
 using SFA.DAS.EAS.Infrastructure.Caching;
 using SFA.DAS.EAS.TestCommon.DependencyResolution;
 using SFA.DAS.EAS.TestCommon.Extensions;
-using SFA.DAS.EAS.Web.Authentication;
 using SFA.DAS.Events.Api.Client;
 using SFA.DAS.Messaging;
 using SFA.DAS.Provider.Events.Api.Client;
@@ -33,7 +32,6 @@ namespace SFA.DAS.EAS.Transactions.AcceptanceTests.Steps.PaymentDetailsSteps
         private static PaymentTestData _testData;
         private static IContainer _container;
         private static Mock<IMessagePublisher> _messagePublisher;
-        private static Mock<IOwinWrapper> _owinWrapper;
         private static Mock<ICookieStorageService<EmployerAccountData>> _cookieService;
         private static Mock<IEventsApi> _eventsApi;
         private static Mock<IPaymentsEventsApiClient> _paymentEventsApi;
@@ -46,7 +44,6 @@ namespace SFA.DAS.EAS.Transactions.AcceptanceTests.Steps.PaymentDetailsSteps
         public static void Arrange()
         {
             _messagePublisher = new Mock<IMessagePublisher>();
-            _owinWrapper = new Mock<IOwinWrapper>();
             _cookieService = new Mock<ICookieStorageService<EmployerAccountData>>();
             _eventsApi = new Mock<IEventsApi>();
             _paymentEventsApi = new Mock<IPaymentsEventsApiClient>();
@@ -55,7 +52,7 @@ namespace SFA.DAS.EAS.Transactions.AcceptanceTests.Steps.PaymentDetailsSteps
             _cacheProvider = new Mock<ICacheProvider>();
             _commitmentsApi = new Mock<IEmployerCommitmentApi>();
 
-            _container = IoC.CreateContainer(_messagePublisher, _owinWrapper, _cookieService, _eventsApi, _commitmentsApi);
+            _container = IoC.CreateContainer(_messagePublisher, _cookieService, _eventsApi, _commitmentsApi);
             _container.Inject(typeof(IPaymentsEventsApiClient), _paymentEventsApi.Object);
             _container.Inject(typeof(IEmployerCommitmentApi), _employerCommitmentApi.Object);
             _container.Inject(typeof(IApprenticeshipInfoServiceWrapper), _apprenticeshipInfoService.Object);

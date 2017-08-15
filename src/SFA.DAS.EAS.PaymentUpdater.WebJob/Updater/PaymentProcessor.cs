@@ -3,8 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using SFA.DAS.EAS.Application.Commands.CreateNewPeriodEnd;
-using SFA.DAS.EAS.Application.Messages;
-using SFA.DAS.EAS.Application.Queries.GetAllEmployerAccounts;
 using SFA.DAS.EAS.Application.Queries.Payments.GetCurrentPeriodEnd;
 using SFA.DAS.EAS.Domain.Attributes;
 using SFA.DAS.EAS.Domain.Configuration;
@@ -78,8 +76,8 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.Updater
                 _logger.Info("No Period Ends to Process");
                 return;
             }
-
-            var response = await _mediator.SendAsync(new GetAllEmployerAccountsRequest());
+            //Todo to come from internal store of account ids
+            //var response = await _mediator.SendAsync(new GetAllEmployerAccountsRequest());
             
             foreach (var paymentsPeriodEnd in periodsToProcess)
             {
@@ -102,17 +100,18 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.Updater
                     continue;
                 }
 
-                foreach (var account in response.Accounts)
-                {
-                    _logger.Info($"Createing payment queue message for accountId:{account.Id} periodEndId:{periodEnd.Id}");
+                //Todo to come from internal store of account ids
+                //foreach (var account in response.Accounts)
+                //{
+                //    _logger.Info($"Createing payment queue message for accountId:{account.Id} periodEndId:{periodEnd.Id}");
 
-                    await _publisher.PublishAsync(new PaymentProcessorQueueMessage
-                    {
-                        AccountPaymentUrl = $"{periodEnd.PaymentsForPeriod}&employeraccountid={account.Id}",
-                        AccountId = account.Id,
-                        PeriodEndId = periodEnd.Id
-                    });
-                }
+                //    await _publisher.PublishAsync(new PaymentProcessorQueueMessage
+                //    {
+                //        AccountPaymentUrl = $"{periodEnd.PaymentsForPeriod}&employeraccountid={account.Id}",
+                //        AccountId = account.Id,
+                //        PeriodEndId = periodEnd.Id
+                //    });
+                //}
 
             }
         }

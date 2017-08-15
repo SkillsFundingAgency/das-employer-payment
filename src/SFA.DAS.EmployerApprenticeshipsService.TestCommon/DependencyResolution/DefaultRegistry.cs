@@ -14,7 +14,6 @@ using SFA.DAS.EAS.Domain.Interfaces;
 using SFA.DAS.EAS.Domain.Models.Account;
 using SFA.DAS.EAS.Infrastructure.Caching;
 using SFA.DAS.EAS.Infrastructure.Data;
-using SFA.DAS.EAS.Web.Authentication;
 using SFA.DAS.Events.Api.Client;
 using SFA.DAS.NLog.Logger;
 using StructureMap;
@@ -27,7 +26,7 @@ namespace SFA.DAS.EAS.TestCommon.DependencyResolution
     public class DefaultRegistry : Registry
     {
 
-        public DefaultRegistry(Mock<IOwinWrapper> owinWrapperMock, Mock<ICookieStorageService<EmployerAccountData>> cookieServiceMock, Mock<IEventsApi> eventApi, Mock<IEmployerCommitmentApi> commitmentsApi)
+        public DefaultRegistry( Mock<ICookieStorageService<EmployerAccountData>> cookieServiceMock, Mock<IEventsApi> eventApi, Mock<IEmployerCommitmentApi> commitmentsApi)
         {
             Scan(scan =>
             {
@@ -36,10 +35,6 @@ namespace SFA.DAS.EAS.TestCommon.DependencyResolution
                 scan.ConnectImplementationsToTypesClosing(typeof(IValidator<>)).OnAddedPluginTypes(t => t.Singleton());
             });
             
-            For<IUserRepository>().Use<UserRepository>();
-
-            For<IOwinWrapper>().Use(() => owinWrapperMock.Object);
-
             For<ICookieStorageService<EmployerAccountData>>().Use(() => cookieServiceMock.Object);
             
             For<IConfiguration>().Use<EmployerApprenticeshipsServiceConfiguration>();

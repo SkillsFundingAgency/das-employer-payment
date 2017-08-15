@@ -26,44 +26,7 @@ namespace SFA.DAS.EAS.Infrastructure.Data
             _mapper = mapper;
         }
 
-        public async Task<List<TransactionLine>> GetAccountTransactionsByDateRange(
-            long accountId, DateTime fromDate, DateTime toDate)
-        {
-            var result = await WithConnection(async c =>
-            {
-                var parameters = new DynamicParameters();
-                parameters.Add("@accountId", accountId, DbType.Int64);
-                parameters.Add("@fromDate", new DateTime(fromDate.Year, fromDate.Month, fromDate.Day), DbType.DateTime);
-                parameters.Add("@toDate", new DateTime(toDate.Year, toDate.Month, toDate.Day, 23, 59, 59), DbType.DateTime);
-
-                return await c.QueryAsync<TransactionEntity>(
-                    sql: "[employer_financial].[GetTransactionLines_ByAccountId]",
-                    param: parameters,
-                    commandType: CommandType.StoredProcedure);
-            });
-
-            return MapTransactions(result);
-        }
-
-        public async Task<List<TransactionLine>> GetAccountLevyTransactionsByDateRange(
-            long accountId, DateTime fromDate, DateTime toDate)
-        {
-            var result = await WithConnection(async c =>
-            {
-                var parameters = new DynamicParameters();
-                parameters.Add("@accountId", accountId, DbType.Int64);
-                parameters.Add("@fromDate", new DateTime(fromDate.Year, fromDate.Month, fromDate.Day), DbType.DateTime);
-                parameters.Add("@toDate", new DateTime(toDate.Year, toDate.Month, toDate.Day, 23, 59, 59), DbType.DateTime);
-
-                return await c.QueryAsync<TransactionEntity>(
-                    sql: "[employer_financial].[GetLevyDetail_ByAccountIdAndDateRange]",
-                    param: parameters,
-                    commandType: CommandType.StoredProcedure);
-            });
-
-            return MapTransactions(result);
-        }
-
+        
         public async Task<List<TransactionLine>> GetAccountTransactionByProviderAndDateRange(
             long accountId, long ukprn, DateTime fromDate, DateTime toDate)
         {
@@ -106,38 +69,7 @@ namespace SFA.DAS.EAS.Infrastructure.Data
 
             return MapTransactions(result);
         }
-
-        public async Task<int> GetPreviousTransactionsCount(long accountId, DateTime fromDate)
-        {
-            var result = await WithConnection(async c =>
-            {
-                var parameters = new DynamicParameters();
-                parameters.Add("@accountId", accountId, DbType.Int64);
-                parameters.Add("@fromDate", new DateTime(fromDate.Year, fromDate.Month, fromDate.Day), DbType.DateTime);
-
-                return await c.ExecuteScalarAsync<int>(
-                    sql: "[employer_financial].[GetPreviousTransactionsCount]",
-                    param: parameters,
-                    commandType: CommandType.StoredProcedure);
-            });
-
-            return result;
-        }
-
-        public async Task<List<TransactionSummary>> GetAccountTransactionSummary(long accountId)
-        {
-            var result = await WithConnection(async c =>
-            {
-                var parameters = new DynamicParameters();
-                parameters.Add("@AccountId", accountId, DbType.Int64);
-                
-                return await c.QueryAsync<TransactionSummary>(
-                    sql: "[employer_financial].[GetTransactionSummary_ByAccountId]",
-                    param: parameters,
-                    commandType: CommandType.StoredProcedure);
-            });
-            return result.ToList();
-        }
+        
 
         private List<TransactionLine> MapTransactions(IEnumerable<TransactionEntity> transactionEntities)
         {

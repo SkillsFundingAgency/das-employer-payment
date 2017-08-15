@@ -1,4 +1,4 @@
-﻿CREATE TABLE [employer_financial].[PaymentMetaData]
+﻿CREATE TABLE [PaymentMetaData]
 (
 	[Id] BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
     [ProviderName] VARCHAR(MAX) NULL,

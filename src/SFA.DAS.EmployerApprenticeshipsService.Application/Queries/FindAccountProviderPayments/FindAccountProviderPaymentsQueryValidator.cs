@@ -7,12 +7,12 @@ namespace SFA.DAS.EAS.Application.Queries.FindAccountProviderPayments
 {
     public class FindAccountProviderPaymentsQueryValidator : IValidator<FindAccountProviderPaymentsQuery>
     {
-        private readonly IMembershipRepository _membershipRepository;
+        //private readonly IMembershipRepository _membershipRepository;
 
-        public FindAccountProviderPaymentsQueryValidator(IMembershipRepository membershipRepository)
-        {
-            _membershipRepository = membershipRepository;
-        }
+        //public FindAccountProviderPaymentsQueryValidator(IMembershipRepository membershipRepository)
+        //{
+        //    _membershipRepository = membershipRepository;
+        //}
 
         public ValidationResult Validate(FindAccountProviderPaymentsQuery item)
         {
@@ -45,11 +45,11 @@ namespace SFA.DAS.EAS.Application.Queries.FindAccountProviderPayments
                 result.AddError(nameof(item.ExternalUserId), "ExternalUserId has not been supplied");
             }
 
-            if (!result.IsValid())
-                return result;
+            //if (!result.IsValid())
+            //    return result;
 
-            var caller = await _membershipRepository.GetCaller(item.HashedAccountId, item.ExternalUserId);
-            result.IsUnauthorized = caller == null;
+            //var caller = await _membershipRepository.GetCaller(item.HashedAccountId, item.ExternalUserId);
+            //result.IsUnauthorized = caller == null;
 
             return result;
         }

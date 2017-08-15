@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [employer_financial].[CreatePeriodEnd]
+﻿CREATE PROCEDURE [CreatePeriodEnd]
 	@PeriodEndId nvarchar(20),
 	@CalendarPeriodMonth int,
 	@CalendarPeriodYear int,
@@ -8,7 +8,7 @@
 	@PaymentsForPeriod nvarchar(250)
 AS
 
-INSERT INTO [employer_financial].[PeriodEnd]
+INSERT INTO [PeriodEnd]
            ([PeriodEndId]
            ,[CalendarPeriodMonth]
            ,[CalendarPeriodYear]

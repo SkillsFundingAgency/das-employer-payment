@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [employer_financial].[GetLatestPeriodEnd]
+﻿CREATE PROCEDURE [GetLatestPeriodEnd]
 	
 AS
 SELECT top 1 
@@ -9,7 +9,7 @@ SELECT top 1
       ,[CommitmentDataValidAt]
       ,[CompletionDateTime]
       ,[PaymentsForPeriod]
-  FROM [employer_financial].[PeriodEnd]
+  FROM [PeriodEnd]
   ORDER BY 
 	completiondatetime DESC
 

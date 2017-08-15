@@ -30,9 +30,7 @@ namespace SFA.DAS.EAS.PaymentProvider.Worker.DependencyResolution
             For<IConfiguration>().Use<PaymentProviderConfiguration>();
             For<IEmployerCommitmentApi>().Use<EmployerCommitmentApi>();
             For<ICache>().Use<InMemoryCache>();
-
-            RegisterExecutionPolicies();
-
+            
             RegisterMapper();
 
             AddMediatrRegistrations();
@@ -40,16 +38,7 @@ namespace SFA.DAS.EAS.PaymentProvider.Worker.DependencyResolution
             RegisterLogger();
         }
 
-        private void RegisterExecutionPolicies()
-        {
-            For<Infrastructure.ExecutionPolicies.ExecutionPolicy>()
-                .Use<Infrastructure.ExecutionPolicies.CompaniesHouseExecutionPolicy>()
-                .Named(Infrastructure.ExecutionPolicies.CompaniesHouseExecutionPolicy.Name);
-
-            For<Infrastructure.ExecutionPolicies.ExecutionPolicy>()
-                .Use<Infrastructure.ExecutionPolicies.HmrcExecutionPolicy>()
-                .Named(Infrastructure.ExecutionPolicies.HmrcExecutionPolicy.Name);
-        }
+        
 
         private void AddMediatrRegistrations()
         {
