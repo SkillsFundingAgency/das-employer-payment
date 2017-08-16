@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using SFA.DAS.EAS.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
 using SFA.DAS.Provider.Events.Api.Client;
 
-namespace SFA.DAS.EAS.Domain.Configuration
+namespace SFA.DAS.EmployerPayments.Domain.Configuration
 {
     public class PaymentsApiClientConfiguration : IPaymentsEventsApiConfiguration, IConfiguration
     {

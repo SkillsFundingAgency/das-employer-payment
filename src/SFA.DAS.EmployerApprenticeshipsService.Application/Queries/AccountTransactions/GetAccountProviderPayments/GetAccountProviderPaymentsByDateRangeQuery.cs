@@ -1,7 +1,7 @@
 ﻿using System;
 using MediatR;
 
-namespace SFA.DAS.EAS.Application.Queries.AccountTransactions.GetAccountProviderPayments
+namespace SFA.DAS.EmployerPayments.Application.Queries.AccountTransactions.GetAccountProviderPayments
 {
     public class GetAccountProviderPaymentsByDateRangeQuery : IAsyncRequest<GetAccountProviderPaymentsByDateRangeResponse>
     {

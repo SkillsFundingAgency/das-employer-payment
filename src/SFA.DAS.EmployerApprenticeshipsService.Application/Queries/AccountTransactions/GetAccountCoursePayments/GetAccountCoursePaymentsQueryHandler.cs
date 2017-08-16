@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
 using MediatR;
-using SFA.DAS.EAS.Application.Validation;
-using SFA.DAS.EAS.Domain.Data.Repositories;
-using SFA.DAS.EAS.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Application.Validation;
+using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
 
-namespace SFA.DAS.EAS.Application.Queries.AccountTransactions.GetAccountCoursePayments
+namespace SFA.DAS.EmployerPayments.Application.Queries.AccountTransactions.GetAccountCoursePayments
 {
     public class GetAccountCoursePaymentsQueryHandler : IAsyncRequestHandler<GetAccountCoursePaymentsQuery, GetAccountCoursePaymentsResponse>
     {

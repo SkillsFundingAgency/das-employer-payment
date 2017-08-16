@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MediatR;
-using SFA.DAS.EAS.Domain.Models.Audit;
+﻿using MediatR;
+using SFA.DAS.EmployerPayments.Domain.Models.Audit;
 
-namespace SFA.DAS.EAS.Application.Commands.AuditCommand
+namespace SFA.DAS.EmployerPayments.Application.Commands.AuditCommand
 {
     public class CreateAuditCommand : IAsyncRequest
     {

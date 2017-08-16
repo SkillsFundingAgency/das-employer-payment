@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SFA.DAS.EAS.Application
+namespace SFA.DAS.EmployerPayments.Application
 {
     public class NotFoundException : Exception
     {

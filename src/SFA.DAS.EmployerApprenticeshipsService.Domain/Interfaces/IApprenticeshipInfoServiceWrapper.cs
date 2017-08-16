@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipCourse;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipProvider;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipCourse;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipProvider;
 
-namespace SFA.DAS.EAS.Domain.Interfaces
+namespace SFA.DAS.EmployerPayments.Domain.Interfaces
 {
     public interface IApprenticeshipInfoServiceWrapper
     {

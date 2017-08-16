@@ -1,8 +1,7 @@
 ﻿using System;
 using SFA.DAS.Provider.Events.Api.Types;
 
-
-namespace SFA.DAS.EAS.Domain.Models.Payments
+namespace SFA.DAS.EmployerPayments.Domain.Models.Payments
 {
     public class Payment
     {

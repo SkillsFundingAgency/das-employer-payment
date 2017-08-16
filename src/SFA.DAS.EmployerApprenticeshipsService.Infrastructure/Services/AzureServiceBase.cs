@@ -10,7 +10,7 @@ using SFA.DAS.Configuration.AzureTableStorage;
 using SFA.DAS.Configuration.FileStorage;
 using SFA.DAS.NLog.Logger;
 
-namespace SFA.DAS.EAS.Infrastructure.Services
+namespace SFA.DAS.EmployerPayments.Infrastructure.Services
 {
     public abstract class AzureServiceBase<T>
     {

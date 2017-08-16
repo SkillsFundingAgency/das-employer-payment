@@ -1,10 +1,10 @@
 ﻿using Moq;
 using SFA.DAS.Commitments.Api.Client.Interfaces;
-using SFA.DAS.EAS.Domain.Configuration;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Domain.Models.Account;
-using SFA.DAS.EAS.Infrastructure.DependencyResolution;
 using SFA.DAS.EAS.TestCommon.MockPolicy;
+using SFA.DAS.EmployerPayments.Domain.Configuration;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Models.Account;
+using SFA.DAS.EmployerPayments.Infrastructure.DependencyResolution;
 using SFA.DAS.Events.Api.Client;
 using SFA.DAS.Messaging;
 using StructureMap;
@@ -17,24 +17,12 @@ namespace SFA.DAS.EAS.TestCommon.DependencyResolution
         {
             return new Container(c =>
             {
-                c.Policies.Add(new ConfigurationPolicy<EmployerApprenticeshipsServiceConfiguration>("SFA.DAS.EmployerApprenticeshipsService"));
-                c.Policies.Add(new ConfigurationPolicy<LevyDeclarationProviderConfiguration>("SFA.DAS.LevyAggregationProvider"));
                 c.Policies.Add(new ConfigurationPolicy<AuditApiClientConfiguration>("SFA.DAS.AuditApiClient"));
                 c.Policies.Add<CurrentDatePolicy>();
                 c.Policies.Add(new MockMessagePolicy(messagePublisher));
                 c.AddRegistry(new DefaultRegistry(cookieService, eventsApi, commitmentApi));
             });
         }
-
-        public static Container CreateLevyWorkerContainer(IMessagePublisher messagePublisher, IPollingMessageReceiver messageReceiver, IHmrcService hmrcService, IEventsApi eventsApi = null)
-        {
-            return new Container(c =>
-            {
-                c.Policies.Add(new ConfigurationPolicy<LevyDeclarationProviderConfiguration>("SFA.DAS.LevyAggregationProvider"));
-                c.Policies.Add(new ConfigurationPolicy<EmployerApprenticeshipsServiceConfiguration>("SFA.DAS.EmployerApprenticeshipsService"));
-                c.Policies.Add(new ConfigurationPolicy<TokenServiceApiClientConfiguration>("SFA.DAS.TokenServiceApiClient"));
-                c.Policies.Add(new ExecutionPolicyPolicy());
-            });
-        }
+        
     }
 }

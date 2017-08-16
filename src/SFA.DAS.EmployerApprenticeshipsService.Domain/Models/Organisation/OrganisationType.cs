@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace SFA.DAS.EAS.Domain.Models.Organisation
+namespace SFA.DAS.EmployerPayments.Domain.Models.Organisation
 {
     public enum OrganisationType: short
     {

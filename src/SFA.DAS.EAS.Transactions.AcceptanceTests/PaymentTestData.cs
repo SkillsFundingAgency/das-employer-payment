@@ -1,12 +1,13 @@
 ﻿using SFA.DAS.Commitments.Api.Types.Apprenticeship;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipCourse;
 using System;
-using SFA.DAS.EAS.Domain.Data.Repositories;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipProvider;
 using SFA.DAS.EAS.TestCommon.ObjectMothers;
+using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipCourse;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipProvider;
 using SFA.DAS.Provider.Events.Api.Types;
 using StructureMap;
 using TechTalk.SpecFlow;
+using PeriodEnd = SFA.DAS.EmployerPayments.Domain.Models.Payments.PeriodEnd;
 
 namespace SFA.DAS.EAS.Transactions.AcceptanceTests
 {
@@ -80,9 +81,9 @@ namespace SFA.DAS.EAS.Transactions.AcceptanceTests
             get { return FrameworkObjectMother.CreateView(Framework); }
         }
 
-        public Domain.Models.ApprenticeshipProvider.Provider Provider
+        public EmployerPayments.Domain.Models.ApprenticeshipProvider.Provider Provider
         {
-            get { return GetProperty<Domain.Models.ApprenticeshipProvider.Provider>("Provider"); }
+            get { return GetProperty<EmployerPayments.Domain.Models.ApprenticeshipProvider.Provider>("Provider"); }
             set { ScenarioContext.Current["Provider"] = value; }
         }
 
@@ -134,9 +135,9 @@ namespace SFA.DAS.EAS.Transactions.AcceptanceTests
             set { ScenarioContext.Current["FrameworkPayment"] = value; }
         }
 
-        public Domain.Models.Payments.PeriodEnd PeriodEnd
+        public PeriodEnd PeriodEnd
         {
-            get { return GetProperty<Domain.Models.Payments.PeriodEnd>("periodEnd"); }
+            get { return GetProperty<PeriodEnd>("periodEnd"); }
             set { ScenarioContext.Current["periodEnd"] = value; }
         }
 
@@ -150,7 +151,7 @@ namespace SFA.DAS.EAS.Transactions.AcceptanceTests
 
             Framework = FrameworkObjectMother.Create("Testing", "General");
 
-            Provider = new Domain.Models.ApprenticeshipProvider.Provider
+            Provider = new EmployerPayments.Domain.Models.ApprenticeshipProvider.Provider
             {
                 ProviderName = "Test Corp"
             };
@@ -237,7 +238,7 @@ namespace SFA.DAS.EAS.Transactions.AcceptanceTests
             };
         }
         
-        private Domain.Models.Payments.PeriodEnd GetCurrentMonthPeriodEnd()
+        private PeriodEnd GetCurrentMonthPeriodEnd()
         {
             var repository = _container.GetInstance<IDasLevyRepository>();
 
@@ -252,7 +253,7 @@ namespace SFA.DAS.EAS.Transactions.AcceptanceTests
             }
 
             //Else creates a new period end for this month 
-            var periodEnd = new Domain.Models.Payments.PeriodEnd
+            var periodEnd = new PeriodEnd
             {
                 Id = DateTime.Now.ToString("ddmmyyHHMMss"),
                 CalendarPeriodMonth = DateTime.Now.Month,

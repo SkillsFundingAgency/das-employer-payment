@@ -1,7 +1,6 @@
-﻿using SFA.DAS.EAS.Domain;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipProvider;
+﻿using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipProvider;
 
-namespace SFA.DAS.EAS.Application.Queries.GetProvider
+namespace SFA.DAS.EmployerPayments.Application.Queries.GetProvider
 {
     public class GetProviderQueryResponse
     {

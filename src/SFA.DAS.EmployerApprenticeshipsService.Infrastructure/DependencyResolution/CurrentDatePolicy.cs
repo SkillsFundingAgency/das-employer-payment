@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Azure;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Infrastructure.Services;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Infrastructure.Services;
 using StructureMap;
 using StructureMap.Pipeline;
 
-namespace SFA.DAS.EAS.Infrastructure.DependencyResolution
+namespace SFA.DAS.EmployerPayments.Infrastructure.DependencyResolution
 {
     public class CurrentDatePolicy : ConfiguredInstancePolicy
     {

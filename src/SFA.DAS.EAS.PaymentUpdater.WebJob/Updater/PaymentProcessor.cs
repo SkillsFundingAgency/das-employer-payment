@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
-using SFA.DAS.EAS.Application.Commands.CreateNewPeriodEnd;
-using SFA.DAS.EAS.Application.Queries.Payments.GetCurrentPeriodEnd;
-using SFA.DAS.EAS.Domain.Attributes;
-using SFA.DAS.EAS.Domain.Configuration;
+using SFA.DAS.EmployerPayments.Application.Commands.CreateNewPeriodEnd;
+using SFA.DAS.EmployerPayments.Application.Queries.Payments.GetCurrentPeriodEnd;
+using SFA.DAS.EmployerPayments.Domain.Attributes;
+using SFA.DAS.EmployerPayments.Domain.Configuration;
 using SFA.DAS.Messaging;
 using SFA.DAS.Provider.Events.Api.Client;
 using SFA.DAS.Provider.Events.Api.Types;
@@ -81,7 +81,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.Updater
             
             foreach (var paymentsPeriodEnd in periodsToProcess)
             {
-                var periodEnd = new Domain.Models.Payments.PeriodEnd
+                var periodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd
                 {
                     Id = paymentsPeriodEnd.Id,
                     CalendarPeriodMonth = paymentsPeriodEnd.CalendarPeriod?.Month ?? 0,

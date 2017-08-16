@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using SFA.DAS.EAS.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
 using StructureMap;
 using StructureMap.Pipeline;
 
-namespace SFA.DAS.EAS.Infrastructure.DependencyResolution
+namespace SFA.DAS.EmployerPayments.Infrastructure.DependencyResolution
 {
     
     public class ConfigurationPolicy<T> : ConfiguredInstancePolicy where T : IConfiguration

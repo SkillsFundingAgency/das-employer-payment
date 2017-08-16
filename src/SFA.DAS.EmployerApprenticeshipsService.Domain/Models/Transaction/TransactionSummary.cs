@@ -1,4 +1,4 @@
-namespace SFA.DAS.EAS.Domain.Models.Transaction
+namespace SFA.DAS.EmployerPayments.Domain.Models.Transaction
 {
     public class TransactionSummary
     {

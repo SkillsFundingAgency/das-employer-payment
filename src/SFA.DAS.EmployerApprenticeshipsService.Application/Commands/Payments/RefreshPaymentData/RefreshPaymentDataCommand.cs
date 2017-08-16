@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace SFA.DAS.EAS.Application.Commands.Payments.RefreshPaymentData
+namespace SFA.DAS.EmployerPayments.Application.Commands.Payments.RefreshPaymentData
 {
     public class RefreshPaymentDataCommand : IAsyncRequest
     {

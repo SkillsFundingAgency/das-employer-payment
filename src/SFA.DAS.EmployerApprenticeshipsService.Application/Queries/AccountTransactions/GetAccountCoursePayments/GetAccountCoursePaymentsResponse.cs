@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using SFA.DAS.EAS.Domain.Models.Transaction;
+using SFA.DAS.EmployerPayments.Domain.Models.Transaction;
 
-namespace SFA.DAS.EAS.Application.Queries.AccountTransactions.GetAccountCoursePayments
+namespace SFA.DAS.EmployerPayments.Application.Queries.AccountTransactions.GetAccountCoursePayments
 {
     public class GetAccountCoursePaymentsResponse
     {

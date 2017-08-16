@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using SFA.DAS.EAS.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
 
-namespace SFA.DAS.EAS.Infrastructure.Services
+namespace SFA.DAS.EmployerPayments.Infrastructure.Services
 {
     public class AzureAdAuthenticationService : IAzureAdAuthenticationService
     {

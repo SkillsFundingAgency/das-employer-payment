@@ -1,4 +1,4 @@
-﻿namespace SFA.DAS.EAS.Application.Messages
+﻿namespace SFA.DAS.EmployerPayments.Application.Messages
 {
     public class PaymentProcessorQueueMessage
     {

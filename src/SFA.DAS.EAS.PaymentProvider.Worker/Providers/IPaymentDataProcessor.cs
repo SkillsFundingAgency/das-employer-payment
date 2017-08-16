@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace SFA.DAS.EAS.PaymentProvider.Worker.Providers
+namespace SFA.DAS.EmployerPayments.Worker.Providers
 {
     public interface IPaymentDataProcessor
     {

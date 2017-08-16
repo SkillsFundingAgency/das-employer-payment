@@ -1,6 +1,6 @@
-﻿using SFA.DAS.EAS.Infrastructure.Logging;
-using SFA.DAS.EAS.PaymentUpdater.WebJob.DependencyResolution;
+﻿using SFA.DAS.EAS.PaymentUpdater.WebJob.DependencyResolution;
 using SFA.DAS.EAS.PaymentUpdater.WebJob.Updater;
+using SFA.DAS.EmployerPayments.Infrastructure.Logging;
 
 namespace SFA.DAS.EAS.PaymentUpdater.WebJob
 {

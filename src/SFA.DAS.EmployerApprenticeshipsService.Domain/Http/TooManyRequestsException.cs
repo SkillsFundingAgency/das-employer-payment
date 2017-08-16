@@ -1,4 +1,4 @@
-﻿namespace SFA.DAS.EAS.Domain.Http
+﻿namespace SFA.DAS.EmployerPayments.Domain.Http
 {
     public class TooManyRequestsException : HttpException
     {

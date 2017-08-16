@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipCourse;
-using System.Linq;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipCourse;
 
-namespace SFA.DAS.EAS.Application.Queries.GetTrainingProgrammes
+namespace SFA.DAS.EmployerPayments.Application.Queries.GetTrainingProgrammes
 {
     public sealed class GetTrainingProgrammesQueryHandler : IAsyncRequestHandler<GetTrainingProgrammesQueryRequest, GetTrainingProgrammesQueryResponse>
     {

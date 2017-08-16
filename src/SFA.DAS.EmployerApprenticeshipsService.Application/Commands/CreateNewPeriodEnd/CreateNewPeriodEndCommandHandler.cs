@@ -1,10 +1,9 @@
 using System.Threading.Tasks;
 using MediatR;
-using SFA.DAS.EAS.Application.Validation;
-using SFA.DAS.EAS.Domain.Data;
-using SFA.DAS.EAS.Domain.Data.Repositories;
+using SFA.DAS.EmployerPayments.Application.Validation;
+using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
 
-namespace SFA.DAS.EAS.Application.Commands.CreateNewPeriodEnd
+namespace SFA.DAS.EmployerPayments.Application.Commands.CreateNewPeriodEnd
 {
     public class CreateNewPeriodEndCommandHandler : AsyncRequestHandler<CreateNewPeriodEndCommand>
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SFA.DAS.EAS.Domain.Models.Payments;
+using SFA.DAS.EmployerPayments.Domain.Models.Payments;
 
-namespace SFA.DAS.EAS.Domain.Data.Repositories
+namespace SFA.DAS.EmployerPayments.Domain.Data.Repositories
 {
     public interface IDasLevyRepository
     {

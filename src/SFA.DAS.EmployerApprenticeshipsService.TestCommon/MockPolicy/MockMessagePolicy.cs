@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Moq;
-using SFA.DAS.EAS.Domain.Attributes;
+using SFA.DAS.EmployerPayments.Domain.Attributes;
 using SFA.DAS.Messaging;
 using StructureMap;
 using StructureMap.Pipeline;

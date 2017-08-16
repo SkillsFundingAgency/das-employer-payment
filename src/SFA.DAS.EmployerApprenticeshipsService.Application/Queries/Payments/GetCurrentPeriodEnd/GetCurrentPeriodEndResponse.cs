@@ -1,7 +1,7 @@
 ﻿
-using SFA.DAS.EAS.Domain.Models.Payments;
+using SFA.DAS.EmployerPayments.Domain.Models.Payments;
 
-namespace SFA.DAS.EAS.Application.Queries.Payments.GetCurrentPeriodEnd
+namespace SFA.DAS.EmployerPayments.Application.Queries.Payments.GetCurrentPeriodEnd
 {
     public class GetPeriodEndResponse
     {

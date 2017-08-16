@@ -7,19 +7,17 @@ using Microsoft.Azure;
 using Moq;
 using SFA.DAS.Audit.Client;
 using SFA.DAS.Commitments.Api.Client.Interfaces;
-using SFA.DAS.EAS.Application.Validation;
-using SFA.DAS.EAS.Domain.Configuration;
-using SFA.DAS.EAS.Domain.Data.Repositories;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Domain.Models.Account;
-using SFA.DAS.EAS.Infrastructure.Caching;
-using SFA.DAS.EAS.Infrastructure.Data;
+using SFA.DAS.EmployerPayments.Application.Validation;
+using SFA.DAS.EmployerPayments.Domain.Configuration;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Models.Account;
+using SFA.DAS.EmployerPayments.Infrastructure.Caching;
 using SFA.DAS.Events.Api.Client;
 using SFA.DAS.NLog.Logger;
 using StructureMap;
 using StructureMap.Graph;
 using WebGrease.Css.Extensions;
-using IConfiguration = SFA.DAS.EAS.Domain.Interfaces.IConfiguration;
+using IConfiguration = SFA.DAS.EmployerPayments.Domain.Interfaces.IConfiguration;
 
 namespace SFA.DAS.EAS.TestCommon.DependencyResolution
 {
@@ -37,7 +35,7 @@ namespace SFA.DAS.EAS.TestCommon.DependencyResolution
             
             For<ICookieStorageService<EmployerAccountData>>().Use(() => cookieServiceMock.Object);
             
-            For<IConfiguration>().Use<EmployerApprenticeshipsServiceConfiguration>();
+            For<IConfiguration>().Use<EmployerPaymentsConfiguration>();
 
             For<ICache>().Use<InMemoryCache>();
             For<IEventsApi>().Use(() => eventApi.Object);

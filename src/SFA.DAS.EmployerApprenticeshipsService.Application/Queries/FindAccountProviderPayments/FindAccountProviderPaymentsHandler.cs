@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
-using SFA.DAS.EAS.Application.Validation;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Domain.Models.Payments;
+using SFA.DAS.EmployerPayments.Application.Validation;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Models.Payments;
 
-namespace SFA.DAS.EAS.Application.Queries.FindAccountProviderPayments
+namespace SFA.DAS.EmployerPayments.Application.Queries.FindAccountProviderPayments
 {
     public class FindAccountProviderPaymentsHandler : IAsyncRequestHandler<FindAccountProviderPaymentsQuery, FindAccountProviderPaymentsResponse>
     {

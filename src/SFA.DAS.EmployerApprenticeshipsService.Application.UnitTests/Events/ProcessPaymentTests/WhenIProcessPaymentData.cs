@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
-using SFA.DAS.EAS.Application.Events.ProcessPayment;
-using SFA.DAS.EAS.Domain.Data.Repositories;
+using SFA.DAS.EmployerPayments.Application.Events.ProcessPayment;
+using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
 using SFA.DAS.NLog.Logger;
 
 namespace SFA.DAS.EAS.Application.UnitTests.Events.ProcessPaymentTests

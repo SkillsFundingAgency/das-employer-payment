@@ -5,20 +5,20 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-using SFA.DAS.EAS.Domain.Configuration;
-using SFA.DAS.EAS.Domain.Data.Repositories;
-using SFA.DAS.EAS.Domain.Models.Payments;
-using SFA.DAS.Sql.Client;
+using SFA.DAS.EmployerPayments.Domain.Configuration;
+using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
+using SFA.DAS.EmployerPayments.Domain.Models.Payments;
 using SFA.DAS.NLog.Logger;
+using SFA.DAS.Sql.Client;
 
-namespace SFA.DAS.EAS.Infrastructure.Data
+namespace SFA.DAS.EmployerPayments.Infrastructure.Data
 {
     public class DasLevyRepository : BaseRepository, IDasLevyRepository
     {
-        private readonly LevyDeclarationProviderConfiguration _configuration;
+        private readonly EmployerPaymentsConfiguration _configuration;
 
 
-        public DasLevyRepository(LevyDeclarationProviderConfiguration configuration, ILog logger)
+        public DasLevyRepository(EmployerPaymentsConfiguration configuration, ILog logger)
             : base(configuration.DatabaseConnectionString, logger)
         {
             _configuration = configuration;

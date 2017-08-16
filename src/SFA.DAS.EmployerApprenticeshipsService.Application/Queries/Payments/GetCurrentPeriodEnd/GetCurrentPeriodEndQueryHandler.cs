@@ -1,10 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MediatR;
-using SFA.DAS.EAS.Domain.Data;
-using SFA.DAS.EAS.Domain.Data.Repositories;
+using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
 
-namespace SFA.DAS.EAS.Application.Queries.Payments.GetCurrentPeriodEnd
+namespace SFA.DAS.EmployerPayments.Application.Queries.Payments.GetCurrentPeriodEnd
 {
     public class GetCurrentPeriodEndQueryHandler : IAsyncRequestHandler<GetCurrentPeriodEndRequest, GetPeriodEndResponse>
     {

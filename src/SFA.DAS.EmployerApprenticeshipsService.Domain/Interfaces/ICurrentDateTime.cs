@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SFA.DAS.EAS.Domain.Interfaces
+namespace SFA.DAS.EmployerPayments.Domain.Interfaces
 {
     public interface ICurrentDateTime
     {

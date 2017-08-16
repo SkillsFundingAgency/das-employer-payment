@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MediatR;
-using SFA.DAS.EAS.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
 
-namespace SFA.DAS.EAS.Application.Queries.GetStandards
+namespace SFA.DAS.EmployerPayments.Application.Queries.GetStandards
 {
     public class GetStandardsQueryHandler : IAsyncRequestHandler<GetStandardsQueryRequest, GetStandardsQueryResponse>
     {

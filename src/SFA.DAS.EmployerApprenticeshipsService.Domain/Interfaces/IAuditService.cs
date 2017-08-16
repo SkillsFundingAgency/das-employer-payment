@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using SFA.DAS.EAS.Domain.Models.Audit;
+using SFA.DAS.EmployerPayments.Domain.Models.Audit;
 
-namespace SFA.DAS.EAS.Domain.Interfaces
+namespace SFA.DAS.EmployerPayments.Domain.Interfaces
 {
     public interface IAuditService
     {

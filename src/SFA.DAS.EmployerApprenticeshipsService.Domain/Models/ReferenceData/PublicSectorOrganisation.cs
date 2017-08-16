@@ -1,4 +1,4 @@
-﻿namespace SFA.DAS.EAS.Domain.Models.ReferenceData
+﻿namespace SFA.DAS.EmployerPayments.Domain.Models.ReferenceData
 {
     public class PublicSectorOrganisation
     {

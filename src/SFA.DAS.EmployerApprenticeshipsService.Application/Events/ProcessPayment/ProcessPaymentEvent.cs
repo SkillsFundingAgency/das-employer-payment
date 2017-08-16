@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace SFA.DAS.EAS.Application.Events.ProcessPayment
+namespace SFA.DAS.EmployerPayments.Application.Events.ProcessPayment
 {
     public class ProcessPaymentEvent : IAsyncNotification
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SFA.DAS.EAS.Domain.Extensions
+namespace SFA.DAS.EmployerPayments.Domain.Extensions
 {
     public static class EnumerableExtension
     {

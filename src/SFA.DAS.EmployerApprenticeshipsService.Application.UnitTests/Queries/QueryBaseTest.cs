@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Moq;
 using NUnit.Framework;
-using SFA.DAS.EAS.Application.Validation;
+using SFA.DAS.EmployerPayments.Application;
+using SFA.DAS.EmployerPayments.Application.Validation;
 
 namespace SFA.DAS.EAS.Application.UnitTests.Queries
 {

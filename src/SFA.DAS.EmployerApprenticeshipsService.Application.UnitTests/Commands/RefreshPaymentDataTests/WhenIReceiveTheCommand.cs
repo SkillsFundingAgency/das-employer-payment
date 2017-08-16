@@ -6,12 +6,13 @@ using System.Net;
 using System.Threading.Tasks;
 using MediatR;
 using Moq;
-using SFA.DAS.EAS.Application.Commands.Payments.RefreshPaymentData;
-using SFA.DAS.EAS.Application.Events.ProcessPayment;
-using SFA.DAS.EAS.Application.Validation;
-using SFA.DAS.EAS.Domain.Data.Repositories;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Domain.Models.Payments;
+using SFA.DAS.EmployerPayments.Application;
+using SFA.DAS.EmployerPayments.Application.Commands.Payments.RefreshPaymentData;
+using SFA.DAS.EmployerPayments.Application.Events.ProcessPayment;
+using SFA.DAS.EmployerPayments.Application.Validation;
+using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Models.Payments;
 using SFA.DAS.NLog.Logger;
 
 namespace SFA.DAS.EAS.Application.UnitTests.Commands.RefreshPaymentDataTests

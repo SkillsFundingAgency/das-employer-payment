@@ -1,26 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Dapper;
-using SFA.DAS.EAS.Domain.Configuration;
-using SFA.DAS.EAS.Domain.Data.Entities.Transaction;
-using SFA.DAS.EAS.Domain.Data.Repositories;
-using SFA.DAS.EAS.Domain.Models.Levy;
-using SFA.DAS.EAS.Domain.Models.Payments;
-using SFA.DAS.EAS.Domain.Models.Transaction;
-using SFA.DAS.Sql.Client;
+using SFA.DAS.EmployerPayments.Domain.Configuration;
+using SFA.DAS.EmployerPayments.Domain.Data.Entities.Transaction;
+using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
+using SFA.DAS.EmployerPayments.Domain.Models.Payments;
+using SFA.DAS.EmployerPayments.Domain.Models.Transaction;
 using SFA.DAS.NLog.Logger;
+using SFA.DAS.Sql.Client;
 
-namespace SFA.DAS.EAS.Infrastructure.Data
+namespace SFA.DAS.EmployerPayments.Infrastructure.Data
 {
     public class TransactionRepository : BaseRepository, ITransactionRepository
     {
         private readonly IMapper _mapper;
 
-        public TransactionRepository(LevyDeclarationProviderConfiguration configuration, IMapper mapper, ILog logger)
+        public TransactionRepository(EmployerPaymentsConfiguration configuration, IMapper mapper, ILog logger)
             : base(configuration.DatabaseConnectionString, logger)
         {
             _mapper = mapper;
@@ -79,11 +77,6 @@ namespace SFA.DAS.EAS.Infrastructure.Data
             {
                 switch (entity.TransactionType)
                 {
-                    case TransactionItemType.Declaration:
-                    case TransactionItemType.TopUp:
-                        transactions.Add(_mapper.Map<LevyDeclarationTransactionLine>(entity));
-                        break;
-
                     case TransactionItemType.Payment:
                         transactions.Add(_mapper.Map<PaymentTransactionLine>(entity));
                         break;

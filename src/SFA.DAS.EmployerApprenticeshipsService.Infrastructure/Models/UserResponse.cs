@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-
 using Newtonsoft.Json;
 
-namespace SFA.DAS.EAS.Infrastructure.Models
+namespace SFA.DAS.EmployerPayments.Infrastructure.Models
 {
     public class UserResponse
     {

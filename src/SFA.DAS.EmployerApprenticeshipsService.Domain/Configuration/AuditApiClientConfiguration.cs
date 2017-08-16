@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using SFA.DAS.Audit.Client;
-using SFA.DAS.EAS.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
 
-namespace SFA.DAS.EAS.Domain.Configuration
+namespace SFA.DAS.EmployerPayments.Domain.Configuration
 {
     public class AuditApiClientConfiguration : IAuditApiConfiguration, IConfiguration
     {

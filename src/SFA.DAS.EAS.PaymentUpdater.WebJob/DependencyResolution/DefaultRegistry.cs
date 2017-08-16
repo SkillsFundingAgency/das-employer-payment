@@ -3,11 +3,11 @@ using System.Linq;
 using System.Reflection;
 using AutoMapper;
 using MediatR;
-using SFA.DAS.EAS.Domain.Configuration;
 using SFA.DAS.EAS.PaymentUpdater.WebJob.Updater;
+using SFA.DAS.EmployerPayments.Domain.Configuration;
 using StructureMap;
 using StructureMap.Graph;
-using IConfiguration = SFA.DAS.EAS.Domain.Interfaces.IConfiguration;
+using IConfiguration = SFA.DAS.EmployerPayments.Domain.Interfaces.IConfiguration;
 using SFA.DAS.NLog.Logger;
 
 namespace SFA.DAS.EAS.PaymentUpdater.WebJob.DependencyResolution
@@ -23,7 +23,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.DependencyResolution
                     scan.RegisterConcreteTypesAgainstTheFirstInterface();
                 });
 
-            For<IConfiguration>().Use<EmployerApprenticeshipsServiceConfiguration>();
+            For<IConfiguration>().Use<EmployerPaymentsConfiguration>();
             For<IPaymentProcessor>().Use<PaymentProcessor>();
 
             RegisterMapper();
@@ -40,7 +40,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.DependencyResolution
 
         private void RegisterMapper()
         {
-            var profiles = Assembly.Load("SFA.DAS.EAS.Infrastructure").GetTypes()
+            var profiles = Assembly.Load("SFA.DAS.EmployerPayments.Infrastructure").GetTypes()
                             .Where(t => typeof(Profile).IsAssignableFrom(t))
                             .Select(t => (Profile)Activator.CreateInstance(t)).ToList();
 

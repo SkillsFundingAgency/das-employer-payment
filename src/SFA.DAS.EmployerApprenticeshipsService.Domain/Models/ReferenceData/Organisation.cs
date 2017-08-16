@@ -1,7 +1,7 @@
 ﻿using System;
-using SFA.DAS.EAS.Domain.Models.Organisation;
+using SFA.DAS.EmployerPayments.Domain.Models.Organisation;
 
-namespace SFA.DAS.EAS.Domain.Models.ReferenceData
+namespace SFA.DAS.EmployerPayments.Domain.Models.ReferenceData
 {
     public class Organisation
     {

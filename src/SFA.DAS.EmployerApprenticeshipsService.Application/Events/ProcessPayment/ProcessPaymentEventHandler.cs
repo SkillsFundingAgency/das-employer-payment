@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using MediatR;
-using SFA.DAS.EAS.Domain.Data.Repositories;
+using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
 using SFA.DAS.NLog.Logger;
 
-namespace SFA.DAS.EAS.Application.Events.ProcessPayment
+namespace SFA.DAS.EmployerPayments.Application.Events.ProcessPayment
 {
     public class ProcessPaymentEventHandler : IAsyncNotificationHandler<ProcessPaymentEvent>
 

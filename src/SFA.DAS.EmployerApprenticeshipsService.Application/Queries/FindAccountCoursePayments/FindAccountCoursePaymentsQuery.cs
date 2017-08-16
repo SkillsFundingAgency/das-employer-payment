@@ -1,7 +1,7 @@
 using System;
 using MediatR;
 
-namespace SFA.DAS.EAS.Application.Queries.FindAccountCoursePayments
+namespace SFA.DAS.EmployerPayments.Application.Queries.FindAccountCoursePayments
 {
     public class FindAccountCoursePaymentsQuery : IAsyncRequest<FindAccountCoursePaymentsResponse>
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using AutoMapper;
 using NUnit.Framework;
-using SFA.DAS.EAS.Domain.Models.Payments;
+using SFA.DAS.EmployerPayments.Domain.Models.Payments;
 using SFA.DAS.Provider.Events.Api.Types;
 using StructureMap.TypeRules;
 using Payment = SFA.DAS.Provider.Events.Api.Types.Payment;

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace SFA.DAS.EAS.Application.Queries.GetStandards
+namespace SFA.DAS.EmployerPayments.Application.Queries.GetStandards
 {
     public class GetStandardsQueryRequest : IAsyncRequest<GetStandardsQueryResponse>
     {

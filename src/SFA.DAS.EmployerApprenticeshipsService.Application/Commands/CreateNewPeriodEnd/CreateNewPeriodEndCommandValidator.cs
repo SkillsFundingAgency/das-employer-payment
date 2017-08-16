@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using SFA.DAS.EAS.Application.Validation;
+using SFA.DAS.EmployerPayments.Application.Validation;
 
-namespace SFA.DAS.EAS.Application.Commands.CreateNewPeriodEnd
+namespace SFA.DAS.EmployerPayments.Application.Commands.CreateNewPeriodEnd
 {
     public class CreateNewPeriodEndCommandValidator : IValidator<CreateNewPeriodEndCommand>
     {

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
-using SFA.DAS.EAS.Application.Queries.AccountTransactions.GetAccountCoursePayments;
-using SFA.DAS.EAS.Application.Queries.AccountTransactions.GetAccountProviderPayments;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Domain.Models.Transaction;
+using SFA.DAS.EmployerPayments.Application.Queries.AccountTransactions.GetAccountCoursePayments;
+using SFA.DAS.EmployerPayments.Application.Queries.AccountTransactions.GetAccountProviderPayments;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Models.Transaction;
 
-namespace SFA.DAS.EAS.Infrastructure.Services
+namespace SFA.DAS.EmployerPayments.Infrastructure.Services
 {
     public class DasLevyService : IDasLevyService
     {

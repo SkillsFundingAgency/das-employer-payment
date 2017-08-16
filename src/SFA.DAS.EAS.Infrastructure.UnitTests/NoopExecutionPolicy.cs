@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using SFA.DAS.EmployerPayments.Infrastructure.ExecutionPolicies;
 
 namespace SFA.DAS.EAS.Infrastructure.UnitTests
 {
-    public class NoopExecutionPolicy : ExecutionPolicies.ExecutionPolicy
+    public class NoopExecutionPolicy : ExecutionPolicy
     {
         public override void Execute(Action action)
         {

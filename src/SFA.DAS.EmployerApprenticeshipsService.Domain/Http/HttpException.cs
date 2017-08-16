@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SFA.DAS.EAS.Domain.Http
+namespace SFA.DAS.EmployerPayments.Domain.Http
 {
     public class HttpException : Exception
     {

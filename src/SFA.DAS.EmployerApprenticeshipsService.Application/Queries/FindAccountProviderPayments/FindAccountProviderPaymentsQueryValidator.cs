@@ -1,9 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using SFA.DAS.EAS.Application.Validation;
-using SFA.DAS.EAS.Domain.Data.Repositories;
+using SFA.DAS.EmployerPayments.Application.Validation;
 
-namespace SFA.DAS.EAS.Application.Queries.FindAccountProviderPayments
+namespace SFA.DAS.EmployerPayments.Application.Queries.FindAccountProviderPayments
 {
     public class FindAccountProviderPaymentsQueryValidator : IValidator<FindAccountProviderPaymentsQuery>
     {

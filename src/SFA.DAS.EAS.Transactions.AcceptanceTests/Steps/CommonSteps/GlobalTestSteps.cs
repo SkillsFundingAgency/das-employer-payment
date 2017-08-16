@@ -1,9 +1,9 @@
 ﻿using Moq;
 using SFA.DAS.Commitments.Api.Client.Interfaces;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Domain.Models.Account;
 using SFA.DAS.EAS.TestCommon.DbCleanup;
 using SFA.DAS.EAS.TestCommon.DependencyResolution;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Models.Account;
 using SFA.DAS.Events.Api.Client;
 using SFA.DAS.Messaging;
 using StructureMap;

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Apprenticeships.Api.Types;
 using SFA.DAS.Apprenticeships.Api.Types.Exceptions;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipCourse;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipProvider;
-using Framework = SFA.DAS.EAS.Domain.Models.ApprenticeshipCourse.Framework;
-using Standard = SFA.DAS.EAS.Domain.Models.ApprenticeshipCourse.Standard;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipCourse;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipProvider;
+using Framework = SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipCourse.Framework;
+using Standard = SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipCourse.Standard;
 
-namespace SFA.DAS.EAS.Application
+namespace SFA.DAS.EmployerPayments.Application
 {
     public class ApprenticeshipInfoServiceWrapper : IApprenticeshipInfoServiceWrapper
     {
@@ -104,7 +104,7 @@ namespace SFA.DAS.EAS.Application
             return new ProvidersView
             {
                 CreatedDate = DateTime.UtcNow,
-                Provider = new Domain.Models.ApprenticeshipProvider.Provider()
+                Provider = new EmployerPayments.Domain.Models.ApprenticeshipProvider.Provider()
                 {
                     Ukprn = provider.Ukprn,
                     ProviderName = provider.ProviderName,

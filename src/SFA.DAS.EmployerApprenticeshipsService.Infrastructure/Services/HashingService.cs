@@ -1,8 +1,8 @@
 ﻿using HashidsNet;
-using SFA.DAS.EAS.Domain.Configuration;
-using SFA.DAS.EAS.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Configuration;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
 
-namespace SFA.DAS.EAS.Infrastructure.Services
+namespace SFA.DAS.EmployerPayments.Infrastructure.Services
 {
     public class HashingService : IHashingService
     {
@@ -11,7 +11,7 @@ namespace SFA.DAS.EAS.Infrastructure.Services
         private const string Hashstring = "SFA: digital apprenticeship service";
         private const string AllowedCharacters = "46789BCDFGHJKLMNPRSTVWXY";
 
-        public HashingService(EmployerApprenticeshipsServiceConfiguration configuration)
+        public HashingService(EmployerPaymentsConfiguration configuration)
         {
             var hashstring = string.IsNullOrEmpty(configuration.Hashstring) 
                     ? Hashstring 

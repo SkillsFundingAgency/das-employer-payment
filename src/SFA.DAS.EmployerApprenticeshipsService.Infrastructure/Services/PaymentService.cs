@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using AutoMapper;
 using SFA.DAS.Commitments.Api.Client.Interfaces;
 using SFA.DAS.Commitments.Api.Types.Apprenticeship;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipCourse;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipProvider;
-using SFA.DAS.EAS.Domain.Models.Payments;
-using SFA.DAS.EAS.Infrastructure.Caching;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipCourse;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipProvider;
+using SFA.DAS.EmployerPayments.Domain.Models.Payments;
+using SFA.DAS.EmployerPayments.Infrastructure.Caching;
+using SFA.DAS.NLog.Logger;
 using SFA.DAS.Provider.Events.Api.Client;
 using SFA.DAS.Provider.Events.Api.Types;
-using SFA.DAS.NLog.Logger;
 using Payment = SFA.DAS.Provider.Events.Api.Types.Payment;
 
-namespace SFA.DAS.EAS.Infrastructure.Services
+namespace SFA.DAS.EmployerPayments.Infrastructure.Services
 {
     public class PaymentService : IPaymentService
     {
@@ -148,7 +148,7 @@ namespace SFA.DAS.EAS.Infrastructure.Services
             return null;
         }
 
-        private Task<Domain.Models.ApprenticeshipProvider.Provider> GetProvider(int ukPrn)
+        private Task<EmployerPayments.Domain.Models.ApprenticeshipProvider.Provider> GetProvider(int ukPrn)
         {
             return Task.Run(() =>
             {

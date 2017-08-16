@@ -6,8 +6,8 @@ using Moq;
 using NUnit.Framework;
 using SFA.DAS.Audit.Client;
 using SFA.DAS.Audit.Types;
-using SFA.DAS.EAS.Domain.Models.Audit;
-using SFA.DAS.EAS.Infrastructure.Services;
+using SFA.DAS.EmployerPayments.Domain.Models.Audit;
+using SFA.DAS.EmployerPayments.Infrastructure.Services;
 using SFA.DAS.NLog.Logger;
 
 namespace SFA.DAS.EAS.Infrastructure.UnitTests.Services.AuditServiceTests

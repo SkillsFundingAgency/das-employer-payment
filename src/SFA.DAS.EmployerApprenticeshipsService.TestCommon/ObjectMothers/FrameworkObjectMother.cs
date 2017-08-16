@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipCourse;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipCourse;
 
 namespace SFA.DAS.EAS.TestCommon.ObjectMothers
 {

@@ -5,16 +5,15 @@ using AutoMapper;
 using MediatR;
 using SFA.DAS.Commitments.Api.Client;
 using SFA.DAS.Commitments.Api.Client.Interfaces;
-using SFA.DAS.EAS.Domain.Configuration;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Infrastructure.Caching;
+using SFA.DAS.EmployerPayments.Domain.Configuration;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Infrastructure.Caching;
+using SFA.DAS.NLog.Logger;
 using StructureMap;
 using StructureMap.Graph;
-using IConfiguration = SFA.DAS.EAS.Domain.Interfaces.IConfiguration;
-using SFA.DAS.NLog.Logger;
-using System.Web;
+using IConfiguration = SFA.DAS.EmployerPayments.Domain.Interfaces.IConfiguration;
 
-namespace SFA.DAS.EAS.PaymentProvider.Worker.DependencyResolution
+namespace SFA.DAS.EmployerPayments.Worker.DependencyResolution
 {
     public class DefaultRegistry : Registry
     {

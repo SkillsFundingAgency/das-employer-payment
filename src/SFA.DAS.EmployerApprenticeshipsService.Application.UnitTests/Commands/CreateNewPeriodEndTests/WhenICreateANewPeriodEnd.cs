@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
-using SFA.DAS.EAS.Application.Commands.CreateNewPeriodEnd;
-using SFA.DAS.EAS.Application.Validation;
-using SFA.DAS.EAS.Domain.Data.Repositories;
-using SFA.DAS.EAS.Domain.Models.Payments;
+using SFA.DAS.EmployerPayments.Application;
+using SFA.DAS.EmployerPayments.Application.Commands.CreateNewPeriodEnd;
+using SFA.DAS.EmployerPayments.Application.Validation;
+using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
+using SFA.DAS.EmployerPayments.Domain.Models.Payments;
 
 namespace SFA.DAS.EAS.Application.UnitTests.Commands.CreateNewPeriodEndTests
 {

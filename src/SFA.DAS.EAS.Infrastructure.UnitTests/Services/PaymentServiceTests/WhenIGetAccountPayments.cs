@@ -9,12 +9,12 @@ using Moq;
 using NUnit.Framework;
 using SFA.DAS.Commitments.Api.Client.Interfaces;
 using SFA.DAS.Commitments.Api.Types.Apprenticeship;
-using SFA.DAS.EAS.Domain.Interfaces;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipCourse;
-using SFA.DAS.EAS.Domain.Models.ApprenticeshipProvider;
-using SFA.DAS.EAS.Domain.Models.Payments;
-using SFA.DAS.EAS.Infrastructure.Caching;
-using SFA.DAS.EAS.Infrastructure.Services;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipCourse;
+using SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipProvider;
+using SFA.DAS.EmployerPayments.Domain.Models.Payments;
+using SFA.DAS.EmployerPayments.Infrastructure.Caching;
+using SFA.DAS.EmployerPayments.Infrastructure.Services;
 using SFA.DAS.Provider.Events.Api.Client;
 using SFA.DAS.Provider.Events.Api.Types;
 using SFA.DAS.NLog.Logger;
@@ -39,7 +39,7 @@ namespace SFA.DAS.EAS.Infrastructure.UnitTests.Services.PaymentServiceTests
         private Framework _framework;
         private Standard _standard;
         private Apprenticeship _apprenticeship;
-        private Domain.Models.ApprenticeshipProvider.Provider _provider;
+        private EmployerPayments.Domain.Models.ApprenticeshipProvider.Provider _provider;
         private PaymentDetails _standardPayment;
         private PaymentDetails _frameworkPayment;
 
@@ -117,7 +117,7 @@ namespace SFA.DAS.EAS.Infrastructure.UnitTests.Services.PaymentServiceTests
             _cacheProvider.SetupSequence(
                 x => x.Get<ProvidersView>($"{nameof(ProvidersView)}_{_provider.Ukprn.ToString()}"))
                 .Returns(null)
-                .Returns(new ProvidersView {Provider = new Domain.Models.ApprenticeshipProvider.Provider()});
+                .Returns(new ProvidersView {Provider = new EmployerPayments.Domain.Models.ApprenticeshipProvider.Provider()});
 
             //Act
             await _paymentService.GetAccountPayments(PeriodEnd, AccountId);
@@ -402,7 +402,7 @@ namespace SFA.DAS.EAS.Infrastructure.UnitTests.Services.PaymentServiceTests
                 NINumber = "12345678"
             };
 
-            _provider = new Domain.Models.ApprenticeshipProvider.Provider
+            _provider = new EmployerPayments.Domain.Models.ApprenticeshipProvider.Provider
             {
                 Id = 10,
                 Ukprn = 74765,

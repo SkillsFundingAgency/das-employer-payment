@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using SFA.DAS.EAS.Application.Validation;
+using SFA.DAS.EmployerPayments.Application.Validation;
 
-namespace SFA.DAS.EAS.Application.Queries.AccountTransactions.GetAccountProviderPayments
+namespace SFA.DAS.EmployerPayments.Application.Queries.AccountTransactions.GetAccountProviderPayments
 {
     public class GetAccountProviderPaymentsByDateRangeValidator : IValidator<GetAccountProviderPaymentsByDateRangeQuery>
     {

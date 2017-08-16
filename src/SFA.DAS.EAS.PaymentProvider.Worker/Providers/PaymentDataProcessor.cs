@@ -2,13 +2,13 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using SFA.DAS.EAS.Application.Commands.Payments.RefreshPaymentData;
-using SFA.DAS.EAS.Application.Messages;
-using SFA.DAS.EAS.Domain.Attributes;
+using SFA.DAS.EmployerPayments.Application.Commands.Payments.RefreshPaymentData;
+using SFA.DAS.EmployerPayments.Application.Messages;
+using SFA.DAS.EmployerPayments.Domain.Attributes;
 using SFA.DAS.Messaging;
 using SFA.DAS.NLog.Logger;
 
-namespace SFA.DAS.EAS.PaymentProvider.Worker.Providers
+namespace SFA.DAS.EmployerPayments.Worker.Providers
 {
     public class PaymentDataProcessor : IPaymentDataProcessor
     {

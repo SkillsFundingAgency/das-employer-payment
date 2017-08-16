@@ -1,4 +1,4 @@
-﻿namespace SFA.DAS.EAS.Domain.Models.Apprenticeship
+﻿namespace SFA.DAS.EmployerPayments.Domain.Models.Apprenticeship
 {
     public enum ChangeStatusType
     {

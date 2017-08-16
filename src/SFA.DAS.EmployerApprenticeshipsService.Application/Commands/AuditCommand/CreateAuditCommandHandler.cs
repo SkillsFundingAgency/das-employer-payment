@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using MediatR;
-using SFA.DAS.EAS.Application.Validation;
-using SFA.DAS.EAS.Domain.Interfaces;
+using SFA.DAS.EmployerPayments.Application.Validation;
+using SFA.DAS.EmployerPayments.Domain.Interfaces;
 
-namespace SFA.DAS.EAS.Application.Commands.AuditCommand
+namespace SFA.DAS.EmployerPayments.Application.Commands.AuditCommand
 {
     public class CreateAuditCommandHandler : AsyncRequestHandler<CreateAuditCommand>
     {

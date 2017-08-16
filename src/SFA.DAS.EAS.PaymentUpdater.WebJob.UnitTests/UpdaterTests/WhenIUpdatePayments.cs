@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using MediatR;
 using Moq;
 using NUnit.Framework;
-using SFA.DAS.EAS.Application.Commands.CreateNewPeriodEnd;
-using SFA.DAS.EAS.Application.Messages;
-using SFA.DAS.EAS.Application.Queries.Payments.GetCurrentPeriodEnd;
-using SFA.DAS.EAS.Domain.Configuration;
 using SFA.DAS.EAS.PaymentUpdater.WebJob.Updater;
+using SFA.DAS.EmployerPayments.Application.Commands.CreateNewPeriodEnd;
+using SFA.DAS.EmployerPayments.Application.Messages;
+using SFA.DAS.EmployerPayments.Application.Queries.Payments.GetCurrentPeriodEnd;
+using SFA.DAS.EmployerPayments.Domain.Configuration;
 using SFA.DAS.Messaging;
 using SFA.DAS.Provider.Events.Api.Client;
 using SFA.DAS.Provider.Events.Api.Types;
@@ -32,7 +32,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
         {
             _paymentsClient = new Mock<IPaymentsEventsApiClient>();
             _mediator = new Mock<IMediator>();
-            _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>())).ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new Domain.Models.Payments.PeriodEnd { Id = "123456" } });
+            _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>())).ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd { Id = "123456" } });
             //TODO update this call
             //_mediator.Setup(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>())).ReturnsAsync(new GetAllEmployerAccountsResponse { Accounts = new List<Account> { new Account { Id = ExpectedAccountId } } });
 
@@ -59,7 +59,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
         {
             //Arrange
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
-                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new Domain.Models.Payments.PeriodEnd { Id = "123" } });
+                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd { Id = "123" } });
 
             _paymentsClient.Setup(x => x.GetPeriodEnds())
                            .ReturnsAsync(new[] {new PeriodEnd {Id="123"}, new PeriodEnd {Id="1234", Links = new PeriodEndLinks { PaymentsForPeriod = "" } } });
@@ -78,7 +78,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
         {
             //Arrange
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
-                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new Domain.Models.Payments.PeriodEnd { Id = "1234" } });
+                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd { Id = "1234" } });
 
             _paymentsClient.Setup(x => x.GetPeriodEnds())
                            .ReturnsAsync(new[] { new PeriodEnd { Id = "123" }, new PeriodEnd { Id = "1234" } });
@@ -130,7 +130,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
                      .ReturnsAsync(new GetPeriodEndResponse
                 {
-                    CurrentPeriodEnd = new Domain.Models.Payments.PeriodEnd { Id = existingPeriodEnd }
+                    CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd { Id = existingPeriodEnd }
                 });
 
             _paymentsClient.Setup(x => x.GetPeriodEnds())
@@ -173,7 +173,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
                      .ReturnsAsync(new GetPeriodEndResponse
                     {
-                        CurrentPeriodEnd = new Domain.Models.Payments.PeriodEnd { Id = "123" }
+                        CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd { Id = "123" }
                     });
 
             _paymentsClient.Setup(x => x.GetPeriodEnds())
@@ -201,7 +201,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
                      .ReturnsAsync(new GetPeriodEndResponse
                     {
-                        CurrentPeriodEnd = new Domain.Models.Payments.PeriodEnd()
+                        CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd()
                     });
 
             _paymentsClient.Setup(x => x.GetPeriodEnds()).ReturnsAsync(new PeriodEnd[]{});
@@ -218,7 +218,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
         {
             //Arrange
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
-                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new Domain.Models.Payments.PeriodEnd() });
+                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd() });
 
             //_mediator.Setup(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>()))
             //         .ReturnsAsync(new GetAllEmployerAccountsResponse
@@ -249,7 +249,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
         {
             //Arrange
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
-                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new Domain.Models.Payments.PeriodEnd() });
+                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd() });
 
             //_mediator.Setup(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>()))
             //         .ReturnsAsync(new GetAllEmployerAccountsResponse
@@ -281,7 +281,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
         {
             //Arrange
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
-                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new Domain.Models.Payments.PeriodEnd()});
+                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd()});
 
             //_mediator.Setup(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>()))
             //         .ReturnsAsync(new GetAllEmployerAccountsResponse { Accounts = new List<Account> { new Account { Id = 87544 } } });
@@ -317,7 +317,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             //         .ReturnsAsync(new GetAllEmployerAccountsResponse { Accounts = new List<Account> { new Account { Id = expectedAccountId } } });
 
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
-                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new Domain.Models.Payments.PeriodEnd { Id = "123" } });
+                     .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd { Id = "123" } });
 
             _paymentsClient.Setup(x => x.GetPeriodEnds())
                            .ReturnsAsync(new[]

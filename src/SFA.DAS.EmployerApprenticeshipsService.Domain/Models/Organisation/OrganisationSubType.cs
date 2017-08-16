@@ -1,4 +1,4 @@
-﻿namespace SFA.DAS.EAS.Domain.Models.Organisation
+﻿namespace SFA.DAS.EmployerPayments.Domain.Models.Organisation
 {
     public enum OrganisationSubType : short
     {

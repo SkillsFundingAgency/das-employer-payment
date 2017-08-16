@@ -1,6 +1,6 @@
 using System;
 
-namespace SFA.DAS.EAS.Domain.Models.Payments
+namespace SFA.DAS.EmployerPayments.Domain.Models.Payments
 {
     public class PaymentDetails : PaymentEntry
     {

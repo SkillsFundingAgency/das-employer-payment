@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace SFA.DAS.EAS.Infrastructure.Caching
+namespace SFA.DAS.EmployerPayments.Infrastructure.Caching
 {
     public class TaskSynchronizationScope
     {

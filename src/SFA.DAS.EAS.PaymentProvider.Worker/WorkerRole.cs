@@ -1,16 +1,15 @@
-using System;
 using System.Diagnostics;
 using System.Net;
 using System.Threading;
 using Microsoft.WindowsAzure.ServiceRuntime;
-using SFA.DAS.EAS.Domain.Configuration;
-using SFA.DAS.EAS.Infrastructure.DependencyResolution;
-using SFA.DAS.EAS.Infrastructure.Logging;
-using SFA.DAS.EAS.PaymentProvider.Worker.DependencyResolution;
-using SFA.DAS.EAS.PaymentProvider.Worker.Providers;
+using SFA.DAS.EmployerPayments.Domain.Configuration;
+using SFA.DAS.EmployerPayments.Infrastructure.DependencyResolution;
+using SFA.DAS.EmployerPayments.Infrastructure.Logging;
+using SFA.DAS.EmployerPayments.Worker.DependencyResolution;
+using SFA.DAS.EmployerPayments.Worker.Providers;
 using StructureMap;
 
-namespace SFA.DAS.EAS.PaymentProvider.Worker
+namespace SFA.DAS.EmployerPayments.Worker
 {
     public class WorkerRole : RoleEntryPoint
     {
@@ -48,7 +47,6 @@ namespace SFA.DAS.EAS.PaymentProvider.Worker
            
             _container = new Container(c =>
             {
-                c.Policies.Add(new ConfigurationPolicy<LevyDeclarationProviderConfiguration>("SFA.DAS.LevyAggregationProvider"));
                 c.Policies.Add(new ConfigurationPolicy<PaymentProviderConfiguration>("SFA.DAS.PaymentProvider"));
                 c.Policies.Add(new ConfigurationPolicy<PaymentsApiClientConfiguration>("SFA.DAS.PaymentsAPI"));
                 c.Policies.Add(new ConfigurationPolicy<CommitmentsApiClientConfiguration>("SFA.DAS.CommitmentsAPI"));

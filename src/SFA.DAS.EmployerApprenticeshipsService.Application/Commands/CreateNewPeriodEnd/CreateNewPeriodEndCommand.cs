@@ -1,8 +1,7 @@
 ﻿using MediatR;
-using SFA.DAS.EAS.Domain.Models.Payments;
+using SFA.DAS.EmployerPayments.Domain.Models.Payments;
 
-
-namespace SFA.DAS.EAS.Application.Commands.CreateNewPeriodEnd
+namespace SFA.DAS.EmployerPayments.Application.Commands.CreateNewPeriodEnd
 {
     public class CreateNewPeriodEndCommand : IAsyncRequest
     {

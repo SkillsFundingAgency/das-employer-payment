@@ -1,4 +1,4 @@
-﻿namespace SFA.DAS.EAS.Domain.Models.ApprenticeshipCourse
+﻿namespace SFA.DAS.EmployerPayments.Domain.Models.ApprenticeshipCourse
 {
     public class Framework : ITrainingProgramme
     {

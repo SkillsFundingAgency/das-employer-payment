@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using SFA.DAS.EAS.Application.Validation;
+using SFA.DAS.EmployerPayments.Application.Validation;
 
-namespace SFA.DAS.EAS.Application.Commands.Payments.RefreshPaymentData
+namespace SFA.DAS.EmployerPayments.Application.Commands.Payments.RefreshPaymentData
 {
     public class RefreshPaymentDataCommandValidator  : IValidator<RefreshPaymentDataCommand>
     {

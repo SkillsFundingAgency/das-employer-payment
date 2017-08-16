@@ -1,10 +1,4 @@
-﻿using System;
-using System.Linq;
-using NLog;
-using StructureMap;
-using StructureMap.Pipeline;
-
-namespace SFA.DAS.EAS.Infrastructure.DependencyResolution
+﻿namespace SFA.DAS.EmployerPayments.Infrastructure.DependencyResolution
 {
     //public class LoggingPolicy : ConfiguredInstancePolicy
     //{
