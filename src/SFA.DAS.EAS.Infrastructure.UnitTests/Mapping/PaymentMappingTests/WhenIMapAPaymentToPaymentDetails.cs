@@ -18,7 +18,7 @@ namespace SFA.DAS.EAS.Infrastructure.UnitTests.Mapping.PaymentMappingTests
         [SetUp]
         public void Arrange()
         {
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("SFA.DAS.EAS"));
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("SFA.DAS.EmployerPayments"));
 
             var mappingProfiles = new List<Profile>();
 
