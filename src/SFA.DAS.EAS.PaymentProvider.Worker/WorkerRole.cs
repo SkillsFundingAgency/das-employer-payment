@@ -1,18 +1,23 @@
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using SFA.DAS.EmployerPayments.Domain.Configuration;
 using SFA.DAS.EmployerPayments.Infrastructure.DependencyResolution;
 using SFA.DAS.EmployerPayments.Infrastructure.Logging;
 using SFA.DAS.EmployerPayments.Worker.DependencyResolution;
 using SFA.DAS.EmployerPayments.Worker.Providers;
+using SFA.DAS.Messaging;
 using StructureMap;
 
 namespace SFA.DAS.EmployerPayments.Worker
 {
     public class WorkerRole : RoleEntryPoint
     {
+        private const string ServiceName = "SFA.DAS.EmployerPayments";
+
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private readonly ManualResetEvent _runCompleteEvent = new ManualResetEvent(false);
         private IContainer _container;
@@ -20,12 +25,13 @@ namespace SFA.DAS.EmployerPayments.Worker
         public override void Run()
         {
             LoggingConfig.ConfigureLogging();
-            Trace.TraceInformation("SFA.DAS.EAS.PaymentProvider.Worker is running");
+            Trace.TraceInformation("SFA.DAS.PaymentProvider.Worker is running");
 
             try
             {
-                var paymentDataProcessor = _container.GetInstance<IPaymentDataProcessor>();
-                paymentDataProcessor.RunAsync(_cancellationTokenSource.Token).Wait();
+                var providers = _container.GetAllInstances<IMessageProcessor>();
+                var taskList = providers.Select(x => x.RunAsync(_cancellationTokenSource.Token));
+                Task.WaitAll(taskList.ToArray());
             }
             finally
             {
@@ -47,10 +53,10 @@ namespace SFA.DAS.EmployerPayments.Worker
            
             _container = new Container(c =>
             {
-                c.Policies.Add(new ConfigurationPolicy<PaymentProviderConfiguration>("SFA.DAS.PaymentProvider"));
+                c.Policies.Add(new ConfigurationPolicy<EmployerPaymentsConfiguration>(ServiceName));
                 c.Policies.Add(new ConfigurationPolicy<PaymentsApiClientConfiguration>("SFA.DAS.PaymentsAPI"));
                 c.Policies.Add(new ConfigurationPolicy<CommitmentsApiClientConfiguration>("SFA.DAS.CommitmentsAPI"));
-                c.Policies.Add(new MessagePolicy<PaymentProviderConfiguration>("SFA.DAS.PaymentProvider"));
+                c.Policies.Add(new MessagePolicy<EmployerPaymentsConfiguration>(ServiceName));
                 c.Policies.Add(new ExecutionPolicyPolicy());
                 c.AddRegistry<DefaultRegistry>();
             });

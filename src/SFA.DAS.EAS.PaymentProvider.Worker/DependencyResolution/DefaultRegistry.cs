@@ -8,6 +8,7 @@ using SFA.DAS.Commitments.Api.Client.Interfaces;
 using SFA.DAS.EmployerPayments.Domain.Configuration;
 using SFA.DAS.EmployerPayments.Domain.Interfaces;
 using SFA.DAS.EmployerPayments.Infrastructure.Caching;
+using SFA.DAS.Messaging;
 using SFA.DAS.NLog.Logger;
 using StructureMap;
 using StructureMap.Graph;
@@ -24,9 +25,10 @@ namespace SFA.DAS.EmployerPayments.Worker.DependencyResolution
             {
                 scan.AssembliesFromApplicationBaseDirectory(a => a.GetName().Name.StartsWith("SFA.DAS."));
                 scan.RegisterConcreteTypesAgainstTheFirstInterface();
+                scan.AddAllTypesOf<IMessageProcessor>();
             });
 
-            For<IConfiguration>().Use<PaymentProviderConfiguration>();
+            For<IConfiguration>().Use<EmployerPaymentsConfiguration>();
             For<IEmployerCommitmentApi>().Use<EmployerCommitmentApi>();
             For<ICache>().Use<InMemoryCache>();
             

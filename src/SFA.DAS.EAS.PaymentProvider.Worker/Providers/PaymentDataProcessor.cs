@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MediatR;
 using SFA.DAS.EmployerPayments.Application.Commands.Payments.RefreshPaymentData;
 using SFA.DAS.EmployerPayments.Application.Messages;
@@ -10,63 +8,32 @@ using SFA.DAS.NLog.Logger;
 
 namespace SFA.DAS.EmployerPayments.Worker.Providers
 {
-    public class PaymentDataProcessor : IPaymentDataProcessor
+    public class PaymentDataProcessor : MessageProcessor<PaymentProcessorQueueMessage>
     {
-        [QueueName]
+        [QueueName("employer_payments")]
         public string refresh_payments { get; set; }
-
-        private readonly IPollingMessageReceiver _pollingMessageReceiver;
+        
         private readonly IMediator _mediator;
         private readonly ILog _logger;
 
-        public PaymentDataProcessor(IPollingMessageReceiver pollingMessageReceiver, IMediator mediator, ILog logger)
+        public PaymentDataProcessor(IPollingMessageReceiver pollingMessageReceiver, IMediator mediator, ILog logger) : base(pollingMessageReceiver, logger)
         {
-            _pollingMessageReceiver = pollingMessageReceiver;
             _mediator = mediator;
             _logger = logger;
         }
 
-        public async Task RunAsync(CancellationToken cancellationToken)
+
+        protected override async Task ProcessMessage(PaymentProcessorQueueMessage messageContent)
         {
-            while (!cancellationToken.IsCancellationRequested)
-            {
-                var message = await _pollingMessageReceiver.ReceiveAsAsync<PaymentProcessorQueueMessage>();
-
-                try
-                {
-                    await ProcessMessage(message);
-                }
-                catch (Exception ex)
-                {
-                    _logger.Fatal(ex,
-                        $"Refresh payment message processing failed for account with ID [{message?.Content?.AccountId}]");
-                    break; //Stop processing anymore messages as this failure needs to be investigated
-                }
-            }
-        }
-
-        private async Task ProcessMessage(Message<PaymentProcessorQueueMessage> message)
-        {
-            if (message?.Content?.AccountId == null)
-            {
-                if (message != null)
-                {
-                    await message.CompleteAsync();
-                }
-
-                return;
-            }
-
-            _logger.Info($"Processing refresh payment command for AccountId:{message.Content.AccountId} PeriodEnd:{message.Content.PeriodEndId}");
+            _logger.Info($"Processing refresh payment command for AccountId:{messageContent.AccountId} PeriodEnd:{messageContent.PeriodEndId}");
 
             await _mediator.SendAsync(new RefreshPaymentDataCommand
             {
-                AccountId = message.Content.AccountId,
-                PeriodEnd = message.Content.PeriodEndId,
-                PaymentUrl = message.Content.AccountPaymentUrl
+                AccountId = messageContent.AccountId,
+                PeriodEnd = messageContent.PeriodEndId,
+                PaymentUrl = messageContent.AccountPaymentUrl
             });
 
-            await message.CompleteAsync();
         }
     }
 }
