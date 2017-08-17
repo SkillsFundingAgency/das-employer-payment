@@ -17,6 +17,7 @@ namespace SFA.DAS.EAS.TestCommon.DependencyResolution
         {
             return new Container(c =>
             {
+                c.Policies.Add(new ConfigurationPolicy<EmployerPaymentsConfiguration>("SFA.DAS.EmployerPayments"));
                 c.Policies.Add(new ConfigurationPolicy<AuditApiClientConfiguration>("SFA.DAS.AuditApiClient"));
                 c.Policies.Add<CurrentDatePolicy>();
                 c.Policies.Add(new MockMessagePolicy(messagePublisher));

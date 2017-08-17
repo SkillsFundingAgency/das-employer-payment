@@ -37,7 +37,7 @@ namespace SFA.DAS.EmployerPayments.Infrastructure.Data
                 parameters.Add("@toDate", new DateTime(toDate.Year, toDate.Month, toDate.Day, 23, 59, 59), DbType.DateTime);
 
                 return await c.QueryAsync<TransactionEntity>(
-                    sql: "[employer_financial].[GetPaymentDetail_ByAccountProviderAndDateRange]",
+                    sql: "[GetPaymentDetail_ByAccountProviderAndDateRange]",
                     param: parameters,
                     commandType: CommandType.StoredProcedure);
             });
@@ -60,7 +60,7 @@ namespace SFA.DAS.EmployerPayments.Infrastructure.Data
                 parameters.Add("@toDate", new DateTime(toDate.Year, toDate.Month, toDate.Day, 23, 59, 59), DbType.DateTime);
 
                 return await c.QueryAsync<TransactionEntity>(
-                    sql: "[employer_financial].[GetPaymentDetail_ByAccountProviderCourseAndDateRange]",
+                    sql: "[GetPaymentDetail_ByAccountProviderCourseAndDateRange]",
                     param: parameters,
                     commandType: CommandType.StoredProcedure);
             });

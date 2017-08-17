@@ -38,7 +38,7 @@ namespace SFA.DAS.EmployerPayments.Infrastructure.Data
                 parameters.Add("@PaymentsForPeriod", periodEnd.PaymentsForPeriod, DbType.String);
 
                 return await c.ExecuteAsync(
-                    sql: "[employer_financial].[CreatePeriodEnd]",
+                    sql: "[CreatePeriodEnd]",
                     param: parameters,
                     commandType: CommandType.StoredProcedure);
             });
@@ -47,7 +47,7 @@ namespace SFA.DAS.EmployerPayments.Infrastructure.Data
         public async Task<PeriodEnd> GetLatestPeriodEnd()
         {
             var result = await WithConnection(async c => await c.QueryAsync<PeriodEnd>(
-                "[employer_financial].[GetLatestPeriodEnd]",
+                "[GetLatestPeriodEnd]",
                 null,
                 commandType: CommandType.StoredProcedure));
             
@@ -96,7 +96,7 @@ namespace SFA.DAS.EmployerPayments.Infrastructure.Data
                             parameters.Add("@ApprenticeshipCourseLevel", details.CourseLevel, DbType.Int32);
                             parameters.Add("@ApprenticeshipCourseStartDate", details.CourseStartDate, DbType.DateTime);
 
-                            await unitOfWork.Execute("[employer_financial].[CreatePayment]", parameters,
+                            await unitOfWork.Execute("[CreatePayment]", parameters,
                                 CommandType.StoredProcedure);
                         }
 
@@ -119,7 +119,7 @@ namespace SFA.DAS.EmployerPayments.Infrastructure.Data
                 parameters.Add("@paymentId", paymentId, DbType.Guid);
 
                 return await c.QueryAsync<Payment>(
-                    sql: "[employer_financial].[GetPaymentData_ById]",
+                    sql: "[GetPaymentData_ById]",
                     param: parameters,
                     commandType: CommandType.StoredProcedure);
             });
@@ -135,7 +135,7 @@ namespace SFA.DAS.EmployerPayments.Infrastructure.Data
                 parameters.Add("@accountId", accountId, DbType.Int64);
 
                 return await c.QueryAsync<Guid>(
-                    sql: "[employer_financial].[GetAccountPaymentIds]",
+                    sql: "[GetAccountPaymentIds]",
                     param: parameters,
                     commandType: CommandType.StoredProcedure);
             });
