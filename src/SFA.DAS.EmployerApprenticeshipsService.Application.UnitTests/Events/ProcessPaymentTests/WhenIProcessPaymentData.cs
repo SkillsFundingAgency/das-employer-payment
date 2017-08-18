@@ -5,7 +5,7 @@ using SFA.DAS.EmployerPayments.Application.Events.ProcessPayment;
 using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
 using SFA.DAS.NLog.Logger;
 
-namespace SFA.DAS.EAS.Application.UnitTests.Events.ProcessPaymentTests
+namespace SFA.DAS.EmployerPayments.Application.UnitTests.Events.ProcessPaymentTests
 {
     public class WhenIProcessPaymentData
     {

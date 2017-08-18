@@ -1,12 +1,11 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using MediatR;
 using Moq;
-using SFA.DAS.EmployerPayments.Application;
+using NUnit.Framework;
 using SFA.DAS.EmployerPayments.Application.Commands.Payments.RefreshPaymentData;
 using SFA.DAS.EmployerPayments.Application.Events.ProcessPayment;
 using SFA.DAS.EmployerPayments.Application.Validation;
@@ -15,7 +14,7 @@ using SFA.DAS.EmployerPayments.Domain.Interfaces;
 using SFA.DAS.EmployerPayments.Domain.Models.Payments;
 using SFA.DAS.NLog.Logger;
 
-namespace SFA.DAS.EAS.Application.UnitTests.Commands.RefreshPaymentDataTests
+namespace SFA.DAS.EmployerPayments.Application.UnitTests.Commands.RefreshPaymentDataTests
 {
     public class WhenIReceiveTheCommand
     {

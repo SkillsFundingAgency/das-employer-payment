@@ -3,7 +3,7 @@ using NUnit.Framework;
 using SFA.DAS.EmployerPayments.Application.Commands.CreateNewPeriodEnd;
 using SFA.DAS.EmployerPayments.Domain.Models.Payments;
 
-namespace SFA.DAS.EAS.Application.UnitTests.Commands.CreateNewPeriodEndTests
+namespace SFA.DAS.EmployerPayments.Application.UnitTests.Commands.CreateNewPeriodEndTests
 {
     public class WhenIValidateTheCommand
     {

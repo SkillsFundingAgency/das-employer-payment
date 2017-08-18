@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using SFA.DAS.EmployerPayments.Application.Commands.Payments.RefreshPaymentData;
 
-namespace SFA.DAS.EAS.Application.UnitTests.Commands.RefreshPaymentDataTests
+namespace SFA.DAS.EmployerPayments.Application.UnitTests.Commands.RefreshPaymentDataTests
 {
     public class WhenIValidateTheCommand
     {

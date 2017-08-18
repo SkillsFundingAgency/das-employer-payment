@@ -3,10 +3,9 @@ using System.Threading.Tasks;
 using MediatR;
 using Moq;
 using NUnit.Framework;
-using SFA.DAS.EmployerPayments.Application;
 using SFA.DAS.EmployerPayments.Application.Validation;
 
-namespace SFA.DAS.EAS.Application.UnitTests.Queries
+namespace SFA.DAS.EmployerPayments.Application.UnitTests.Queries
 {
     public abstract class QueryBaseTest<THandler, TRequest, TResponse> 
         where THandler : IAsyncRequestHandler<TRequest, TResponse> 
