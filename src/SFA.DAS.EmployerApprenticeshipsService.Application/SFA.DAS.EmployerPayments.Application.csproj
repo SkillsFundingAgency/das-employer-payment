@@ -188,6 +188,9 @@
     <Compile Include="Queries\FindAccountCoursePayments\FindAccountCoursePaymentsQueryHandler.cs" />
     <Compile Include="Queries\FindAccountCoursePayments\FindAccountCoursePaymentsQueryValidator.cs" />
     <Compile Include="Queries\FindAccountCoursePayments\FindAccountCoursePaymentsResponse.cs" />
+    <Compile Include="Queries\GetAccounts\GetAccountsQuery.cs" />
+    <Compile Include="Queries\GetAccounts\GetAccountsQueryHandler.cs" />
+    <Compile Include="Queries\GetAccounts\GetAccountsResponse.cs" />
     <Compile Include="Queries\GetProvider\GetProviderQueryHandler.cs" />
     <Compile Include="Queries\GetProvider\GetProviderQueryRequest.cs" />
     <Compile Include="Queries\GetProvider\GetProviderQueryResponse.cs" />
@@ -213,9 +216,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Queries\GetAccounts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
