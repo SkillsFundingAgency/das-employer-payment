@@ -3,6 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using SFA.DAS.EmployerPayments.Application.Commands.CreateNewPeriodEnd;
+using SFA.DAS.EmployerPayments.Application.Messages;
+using SFA.DAS.EmployerPayments.Application.Queries.GetAccounts;
 using SFA.DAS.EmployerPayments.Application.Queries.Payments.GetCurrentPeriodEnd;
 using SFA.DAS.EmployerPayments.Domain.Attributes;
 using SFA.DAS.EmployerPayments.Domain.Configuration;
@@ -16,7 +18,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.Updater
     public class PaymentProcessor : IPaymentProcessor
     {
 
-        [QueueName]
+        [QueueName("employer_payments")]
         public string refresh_payments { get; set; }
 
         private readonly IPaymentsEventsApiClient _paymentsEventsApiClient;
@@ -76,8 +78,8 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.Updater
                 _logger.Info("No Period Ends to Process");
                 return;
             }
-            //Todo to come from internal store of account ids
-            //var response = await _mediator.SendAsync(new GetAllEmployerAccountsRequest());
+            
+            var response = await _mediator.SendAsync(new GetAccountsQuery());
             
             foreach (var paymentsPeriodEnd in periodsToProcess)
             {
@@ -100,18 +102,17 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.Updater
                     continue;
                 }
 
-                //Todo to come from internal store of account ids
-                //foreach (var account in response.Accounts)
-                //{
-                //    _logger.Info($"Createing payment queue message for accountId:{account.Id} periodEndId:{periodEnd.Id}");
+                foreach (var account in response.AccountIds)
+                {
+                    _logger.Info($"Createing payment queue message for accountId:{account} periodEndId:{periodEnd.Id}");
 
-                //    await _publisher.PublishAsync(new PaymentProcessorQueueMessage
-                //    {
-                //        AccountPaymentUrl = $"{periodEnd.PaymentsForPeriod}&employeraccountid={account.Id}",
-                //        AccountId = account.Id,
-                //        PeriodEndId = periodEnd.Id
-                //    });
-                //}
+                    await _publisher.PublishAsync(new PaymentProcessorQueueMessage
+                    {
+                        AccountPaymentUrl = $"{periodEnd.PaymentsForPeriod}&employeraccountid={account}",
+                        AccountId = account,
+                        PeriodEndId = periodEnd.Id
+                    });
+                }
 
             }
         }

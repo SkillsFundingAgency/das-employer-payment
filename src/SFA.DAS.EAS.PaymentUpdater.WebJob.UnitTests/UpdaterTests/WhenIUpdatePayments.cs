@@ -7,6 +7,7 @@ using NUnit.Framework;
 using SFA.DAS.EAS.PaymentUpdater.WebJob.Updater;
 using SFA.DAS.EmployerPayments.Application.Commands.CreateNewPeriodEnd;
 using SFA.DAS.EmployerPayments.Application.Messages;
+using SFA.DAS.EmployerPayments.Application.Queries.GetAccounts;
 using SFA.DAS.EmployerPayments.Application.Queries.Payments.GetCurrentPeriodEnd;
 using SFA.DAS.EmployerPayments.Domain.Configuration;
 using SFA.DAS.Messaging;
@@ -33,8 +34,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             _paymentsClient = new Mock<IPaymentsEventsApiClient>();
             _mediator = new Mock<IMediator>();
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>())).ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd { Id = "123456" } });
-            //TODO update this call
-            //_mediator.Setup(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>())).ReturnsAsync(new GetAllEmployerAccountsResponse { Accounts = new List<Account> { new Account { Id = ExpectedAccountId } } });
+            _mediator.Setup(x => x.SendAsync(It.IsAny<GetAccountsQuery>())).ReturnsAsync(new GetAccountsResponse { AccountIds = new List<long> { ExpectedAccountId  } });
 
             _logger = new Mock<ILog>();
 
@@ -69,7 +69,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
 
             //Assert
             _mediator.Verify(x=>x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()), Times.Once);
-            //_mediator.Verify(x=>x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>()), Times.Once);
+            _mediator.Verify(x=>x.SendAsync(It.IsAny<GetAccountsQuery>()), Times.Once);
             _mediator.Verify(x => x.SendAsync(It.IsAny<CreateNewPeriodEndCommand>()), Times.Once);
         }
 
@@ -88,8 +88,8 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
 
             //Assert
             _mediator.Verify(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()), Times.Once);
-            //_mediator.Verify(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>()), Times.Never);
-            
+            _mediator.Verify(x => x.SendAsync(It.IsAny<GetAccountsQuery>()), Times.Never);
+
         }
 
         [Test]
@@ -153,11 +153,11 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             await _paymentProcessor.RunUpdate();
 
             //Assert
-            //_messagePublisher.Verify(x=>x.PublishAsync(It.Is<PaymentProcessorQueueMessage>(
-            //                                c=>c.AccountId.Equals(ExpectedAccountId) 
-            //                                && c.PeriodEndId.Equals(expectedPeriodEnd)
-            //                                && c.AccountPaymentUrl.Equals($"{expectedPaymentsForPeriodUrl}&employeraccountid={ExpectedAccountId}")
-            //                                )), Times.Once());
+            _messagePublisher.Verify(x=>x.PublishAsync(It.Is<PaymentProcessorQueueMessage>(
+                                            c=>c.AccountId.Equals(ExpectedAccountId) 
+                                            && c.PeriodEndId.Equals(expectedPeriodEnd)
+                                            && c.AccountPaymentUrl.Equals($"{expectedPaymentsForPeriodUrl}&employeraccountid={ExpectedAccountId}")
+                                            )), Times.Once());
         }
 
         [Test]
@@ -166,10 +166,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             //Arrange
             const int expectedAccountId = 12345;
             const string expectedPaymentsForPeriodUrl = "afd";
-
-            //_mediator.Setup(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>()))
-            //         .ReturnsAsync(new GetAllEmployerAccountsResponse { Accounts = new List<Account> { new Account { Id = expectedAccountId } } });
-
+            _mediator.Setup(x => x.SendAsync(It.IsAny<GetAccountsQuery>())).ReturnsAsync(new GetAccountsResponse { AccountIds = new List<long> { expectedAccountId } });
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
                      .ReturnsAsync(new GetPeriodEndResponse
                     {
@@ -210,7 +207,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             await _paymentProcessor.RunUpdate();
 
             //Assert
-            //_mediator.Verify(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>()), Times.Never);
+            _mediator.Verify(x => x.SendAsync(It.IsAny<GetAccountsQuery>()), Times.Never);
         }
 
         [Test]
@@ -219,13 +216,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             //Arrange
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
                      .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd() });
-
-            //_mediator.Setup(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>()))
-            //         .ReturnsAsync(new GetAllEmployerAccountsResponse
-            //        {
-            //            Accounts = new List<Account> { new Account { Id = 87544 } }
-            //        });
-
+            _mediator.Setup(x => x.SendAsync(It.IsAny<GetAccountsQuery>())).ReturnsAsync(new GetAccountsResponse { AccountIds = new List<long> { 87544 } });
             _paymentsClient.Setup(x => x.GetPeriodEnds())
                            .ReturnsAsync(new[]
                             {
@@ -250,13 +241,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             //Arrange
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
                      .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd() });
-
-            //_mediator.Setup(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>()))
-            //         .ReturnsAsync(new GetAllEmployerAccountsResponse
-            //        {
-            //            Accounts = new List<Account> { new Account { Id = 87544 } }
-            //        });
-
+            _mediator.Setup(x => x.SendAsync(It.IsAny<GetAccountsQuery>())).ReturnsAsync(new GetAccountsResponse { AccountIds = new List<long> { 87544 } });
             _paymentsClient.Setup(x => x.GetPeriodEnds())
                            .ReturnsAsync(new[]
                 {
@@ -282,10 +267,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             //Arrange
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
                      .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd()});
-
-            //_mediator.Setup(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>()))
-            //         .ReturnsAsync(new GetAllEmployerAccountsResponse { Accounts = new List<Account> { new Account { Id = 87544 } } });
-
+            _mediator.Setup(x => x.SendAsync(It.IsAny<GetAccountsQuery>())).ReturnsAsync(new GetAccountsResponse { AccountIds = new List<long> { 87544 } });
             _paymentsClient.Setup(x => x.GetPeriodEnds())
                            .ReturnsAsync(new[]
                 {
@@ -312,10 +294,7 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests.UpdaterTests
             _configuration.PaymentsDisabled = true;
             const int expectedAccountId = 12345;
             const string expectedPaymentsForPeriodUrl = "afd";
-
-            //_mediator.Setup(x => x.SendAsync(It.IsAny<GetAllEmployerAccountsRequest>()))
-            //         .ReturnsAsync(new GetAllEmployerAccountsResponse { Accounts = new List<Account> { new Account { Id = expectedAccountId } } });
-
+            _mediator.Setup(x => x.SendAsync(It.IsAny<GetAccountsQuery>())).ReturnsAsync(new GetAccountsResponse { AccountIds = new List<long> { expectedAccountId } });
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetCurrentPeriodEndRequest>()))
                      .ReturnsAsync(new GetPeriodEndResponse { CurrentPeriodEnd = new EmployerPayments.Domain.Models.Payments.PeriodEnd { Id = "123" } });
 
