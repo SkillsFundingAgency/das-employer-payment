@@ -76,6 +76,9 @@
     <Build Include="Tables\PaymentMetaData.sql" />
     <Build Include="StoredProcedures\GetPaymentDetail_ByAccountProviderAndDateRange.sql" />
     <Build Include="StoredProcedures\GetPaymentDetail_ByAccountProviderCourseAndDateRange.sql" />
+    <Build Include="Tables\Account.sql" />
+    <Build Include="StoredProcedures\CreateAccount.sql" />
+    <Build Include="StoredProcedures\GetAccounts.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />

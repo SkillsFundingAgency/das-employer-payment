@@ -211,7 +211,7 @@
     <Compile Include="Caching\InProcessCacheProvider.cs" />
     <Compile Include="Caching\RedisCache.cs" />
     <Compile Include="Caching\TaskSynchronizationScope.cs" />
-    <Compile Include="Data\DasLevyRepository.cs" />
+    <Compile Include="Data\PaymentsRepository.cs" />
     <Compile Include="Data\UnitOfWork.cs" />
     <Compile Include="DependencyResolution\ConfigurationHelper.cs" />
     <Compile Include="DependencyResolution\CurrentDatePolicy.cs" />

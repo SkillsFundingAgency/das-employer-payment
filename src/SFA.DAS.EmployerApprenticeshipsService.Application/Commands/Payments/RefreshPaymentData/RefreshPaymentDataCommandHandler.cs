@@ -16,7 +16,7 @@ namespace SFA.DAS.EmployerPayments.Application.Commands.Payments.RefreshPaymentD
     {
         private readonly IValidator<RefreshPaymentDataCommand> _validator;
         private readonly IPaymentService _paymentService;
-        private readonly IDasLevyRepository _dasLevyRepository;
+        private readonly IPaymentsRepository _paymentsRepository;
         private readonly IMediator _mediator;
         private readonly ILog _logger;
        
@@ -24,13 +24,13 @@ namespace SFA.DAS.EmployerPayments.Application.Commands.Payments.RefreshPaymentD
         public RefreshPaymentDataCommandHandler(
             IValidator<RefreshPaymentDataCommand> validator, 
             IPaymentService paymentService, 
-            IDasLevyRepository dasLevyRepository, 
+            IPaymentsRepository paymentsRepository, 
             IMediator mediator,
             ILog logger)
         {
             _validator = validator;
             _paymentService = paymentService;
-            _dasLevyRepository = dasLevyRepository;
+            _paymentsRepository = paymentsRepository;
             _mediator = mediator;
             _logger = logger;
         }
@@ -57,13 +57,13 @@ namespace SFA.DAS.EmployerPayments.Application.Commands.Payments.RefreshPaymentD
 
             if (payments == null || !payments.Any()) return;
 
-            var existingPaymentIds = await _dasLevyRepository.GetAccountPaymentIds(message.AccountId);
+            var existingPaymentIds = await _paymentsRepository.GetAccountPaymentIds(message.AccountId);
 
             var newPayments = payments.Where(p => !existingPaymentIds.Any(x => x.ToString().Equals(p.Id))).ToArray();
             
             if(!newPayments.Any()) return;
 
-            await _dasLevyRepository.CreatePaymentData(newPayments);
+            await _paymentsRepository.CreatePaymentData(newPayments);
 
             await _mediator.PublishAsync(new ProcessPaymentEvent { AccountId = message.AccountId});
         }

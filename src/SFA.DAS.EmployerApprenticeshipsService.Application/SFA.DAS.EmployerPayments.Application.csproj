@@ -156,6 +156,7 @@
     <Compile Include="Commands\AuditCommand\CreateAuditCommandHandler.cs" />
     <Compile Include="Commands\AuditCommand\CreateAuditCommandValidator.cs" />
     <Compile Include="Commands\CreateAccountReference\CreateAccountReferenceCommand.cs" />
+    <Compile Include="Commands\CreateAccountReference\CreateAccountReferenceCommandHandler.cs" />
     <Compile Include="Commands\CreateAccountReference\CreateAccountReferenceCommandValidator.cs" />
     <Compile Include="Commands\CreateNewPeriodEnd\CreateNewPeriodEndCommand.cs" />
     <Compile Include="Commands\CreateNewPeriodEnd\CreateNewPeriodEndCommandHandler.cs" />

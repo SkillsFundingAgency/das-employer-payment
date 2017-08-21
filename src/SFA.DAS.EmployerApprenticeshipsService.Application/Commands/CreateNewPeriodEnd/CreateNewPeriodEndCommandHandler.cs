@@ -8,12 +8,12 @@ namespace SFA.DAS.EmployerPayments.Application.Commands.CreateNewPeriodEnd
     public class CreateNewPeriodEndCommandHandler : AsyncRequestHandler<CreateNewPeriodEndCommand>
     {
         private readonly IValidator<CreateNewPeriodEndCommand> _validator;
-        private readonly IDasLevyRepository _dasLevyRepository;
+        private readonly IPaymentsRepository _paymentsRepository;
 
-        public CreateNewPeriodEndCommandHandler(IValidator<CreateNewPeriodEndCommand> validator, IDasLevyRepository dasLevyRepository)
+        public CreateNewPeriodEndCommandHandler(IValidator<CreateNewPeriodEndCommand> validator, IPaymentsRepository paymentsRepository)
         {
             _validator = validator;
-            _dasLevyRepository = dasLevyRepository;
+            _paymentsRepository = paymentsRepository;
         }
 
         protected override async Task HandleCore(CreateNewPeriodEndCommand message)
@@ -25,7 +25,7 @@ namespace SFA.DAS.EmployerPayments.Application.Commands.CreateNewPeriodEnd
                 throw new InvalidRequestException(validationResult.ValidationDictionary);
             }
 
-            await _dasLevyRepository.CreateNewPeriodEnd(message.NewPeriodEnd);
+            await _paymentsRepository.CreateNewPeriodEnd(message.NewPeriodEnd);
         }
     }
 }

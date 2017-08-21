@@ -13,12 +13,12 @@ namespace SFA.DAS.EmployerPayments.Application.UnitTests.Commands.CreateNewPerio
     {
         private CreateNewPeriodEndCommandHandler _handler;
         private Mock<IValidator<CreateNewPeriodEndCommand>> _validator;
-        private Mock<IDasLevyRepository> _repository;
+        private Mock<IPaymentsRepository> _repository;
 
         [SetUp]
         public void Arrange()
         {
-            _repository = new Mock<IDasLevyRepository>();
+            _repository = new Mock<IPaymentsRepository>();
 
             _validator = new Mock<IValidator<CreateNewPeriodEndCommand>>();
             _validator.Setup(x => x.Validate(It.IsAny<CreateNewPeriodEndCommand>())).Returns(new ValidationResult {ValidationDictionary = new Dictionary<string, string> ()});

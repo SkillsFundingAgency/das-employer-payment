@@ -156,7 +156,8 @@
     <Compile Include="Events\ProcessPaymentTests\WhenIProcessPaymentData.cs" />
     <Compile Include="FakeTimeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\CreateAccountReferenceTests\WhenIValidateTheCommand.cs" />
+    <Compile Include="Commands\CreateAccountReferenceTests\WhenICreateANewAccountReference.cs" />
+    <Compile Include="Commands\CreateAccountReferenceTests\WhenIValidateTheCommand.cs" />
     <Compile Include="Queries\QueryBaseTest.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -22,7 +22,7 @@ namespace SFA.DAS.EmployerPayments.Application.UnitTests.Commands.RefreshPayment
         private Mock<IValidator<RefreshPaymentDataCommand>> _validator;
         private Mock<IPaymentService> _paymentService;
         private RefreshPaymentDataCommand _command;
-        private Mock<IDasLevyRepository> _dasLevyRepository;
+        private Mock<IPaymentsRepository> _dasLevyRepository;
         private Mock<IMediator> _mediator;
         private Mock<ILog> _logger;
         private List<PaymentDetails> _paymentDetails;
@@ -49,7 +49,7 @@ namespace SFA.DAS.EmployerPayments.Application.UnitTests.Commands.RefreshPayment
             _validator.Setup(x => x.Validate(It.IsAny<RefreshPaymentDataCommand>()))
                       .Returns(new ValidationResult { ValidationDictionary = new Dictionary<string, string> ()});
 
-            _dasLevyRepository = new Mock<IDasLevyRepository>();
+            _dasLevyRepository = new Mock<IPaymentsRepository>();
 
             _dasLevyRepository.Setup(x => x.GetAccountPaymentIds(It.IsAny<long>()))
                 .ReturnsAsync(_existingPaymentIds);

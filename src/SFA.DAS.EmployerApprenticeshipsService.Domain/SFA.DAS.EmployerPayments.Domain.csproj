@@ -185,7 +185,7 @@
     <Compile Include="Configuration\CommitmentsApiClientConfiguration.cs" />
     <Compile Include="Configuration\CompaniesHouseConfiguration.cs" />
     <Compile Include="Configuration\PaymentsApiClientConfiguration.cs" />
-    <Compile Include="Data\Repositories\IDasLevyRepository.cs" />
+    <Compile Include="Data\Repositories\IPaymentsRepository.cs" />
     <Compile Include="Extensions\NullableDateTimeExtension.cs" />
     <Compile Include="Models\ApprenticeshipCourse\Framework.cs" />
     <Compile Include="Models\ApprenticeshipCourse\FrameworksView.cs" />

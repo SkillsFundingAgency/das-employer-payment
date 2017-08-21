@@ -6,18 +6,18 @@ namespace SFA.DAS.EmployerPayments.Application.Queries.Payments.GetCurrentPeriod
 {
     public class GetCurrentPeriodEndQueryHandler : IAsyncRequestHandler<GetCurrentPeriodEndRequest, GetPeriodEndResponse>
     {
-        private readonly IDasLevyRepository _dasLevyRepository;
+        private readonly IPaymentsRepository _paymentsRepository;
 
-        public GetCurrentPeriodEndQueryHandler(IDasLevyRepository dasLevyRepository)
+        public GetCurrentPeriodEndQueryHandler(IPaymentsRepository paymentsRepository)
         {
-            _dasLevyRepository = dasLevyRepository;
+            _paymentsRepository = paymentsRepository;
         }
 
         public async Task<GetPeriodEndResponse> Handle(GetCurrentPeriodEndRequest message)
         {
             var response = new GetPeriodEndResponse();
 
-            var result = await _dasLevyRepository.GetLatestPeriodEnd();
+            var result = await _paymentsRepository.GetLatestPeriodEnd();
             response.CurrentPeriodEnd = result;
 
             return response;

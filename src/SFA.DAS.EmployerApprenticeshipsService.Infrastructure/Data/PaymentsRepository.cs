@@ -13,12 +13,12 @@ using SFA.DAS.Sql.Client;
 
 namespace SFA.DAS.EmployerPayments.Infrastructure.Data
 {
-    public class DasLevyRepository : BaseRepository, IDasLevyRepository
+    public class PaymentsRepository : BaseRepository, IPaymentsRepository
     {
         private readonly EmployerPaymentsConfiguration _configuration;
 
 
-        public DasLevyRepository(EmployerPaymentsConfiguration configuration, ILog logger)
+        public PaymentsRepository(EmployerPaymentsConfiguration configuration, ILog logger)
             : base(configuration.DatabaseConnectionString, logger)
         {
             _configuration = configuration;
@@ -142,7 +142,29 @@ namespace SFA.DAS.EmployerPayments.Infrastructure.Data
 
             return result.ToArray();
         }
-        
+
+        public async Task<IEnumerable<long>> GetAccounts()
+        {
+            var result = await WithConnection(async c => await c.QueryAsync<long>(
+                "[GetAccounts]",
+                commandType: CommandType.StoredProcedure));
+
+            return result.ToArray();
+        }
+
+        public async Task CreateAccountReference(long accountId)
+        {
+            await WithConnection(async c =>
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@accountId", accountId, DbType.Int64);
+               
+                return await c.ExecuteAsync(
+                    sql: "[CreateAccount]",
+                    param: parameters,
+                    commandType: CommandType.StoredProcedure);
+            });
+        }
     }
 }
 

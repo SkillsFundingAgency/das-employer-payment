@@ -10,13 +10,13 @@ namespace SFA.DAS.EmployerPayments.Application.UnitTests.Events.ProcessPaymentTe
     public class WhenIProcessPaymentData
     {
         private ProcessPaymentEventHandler _eventHandler;
-        private Mock<IDasLevyRepository> _dasLevyRepository;
+        private Mock<IPaymentsRepository> _dasLevyRepository;
         private Mock<ILog> _logger;
 
         [SetUp]
         public void Arrange()
         {
-            _dasLevyRepository = new Mock<IDasLevyRepository>();
+            _dasLevyRepository = new Mock<IPaymentsRepository>();
             _logger = new Mock<ILog>();
 
             _eventHandler = new ProcessPaymentEventHandler(_dasLevyRepository.Object,_logger.Object);
