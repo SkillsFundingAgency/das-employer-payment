@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using SFA.DAS.EmployerPayments.Application.Commands.CreateAccountReference;
 
-namespace SFA.DAS.EmployerPayments.Application.UnitTests.Queries.CreateAccountReferenceTests
+namespace SFA.DAS.EmployerPayments.Application.UnitTests.Commands.CreateAccountReferenceTests
 {
     public class WhenIValidateTheCommand
     {

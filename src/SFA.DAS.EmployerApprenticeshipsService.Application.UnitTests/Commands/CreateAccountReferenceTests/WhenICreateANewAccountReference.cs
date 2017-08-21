@@ -6,7 +6,7 @@ using SFA.DAS.EmployerPayments.Application.Commands.CreateAccountReference;
 using SFA.DAS.EmployerPayments.Application.Validation;
 using SFA.DAS.EmployerPayments.Domain.Data.Repositories;
 
-namespace SFA.DAS.EmployerPayments.Application.UnitTests.Queries.CreateAccountReferenceTests
+namespace SFA.DAS.EmployerPayments.Application.UnitTests.Commands.CreateAccountReferenceTests
 {
     public class WhenICreateANewAccountReference 
     {
