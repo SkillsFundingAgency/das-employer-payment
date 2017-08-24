@@ -14,17 +14,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{331690B3-1DA8-408E-B6A7-A3237310E6AB}"
 EndProject
-Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "SFA.DAS.EmployerPayments.CloudService", "SFA.DAS.CloudService\SFA.DAS.EmployerPayments.CloudService.ccproj", "{97F77CF7-A13E-4441-8081-F941AC1B8BB1}"
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "SFA.DAS.EmployerPayments.CloudService", "SFA.DAS.EmployerPayments.CloudService\SFA.DAS.EmployerPayments.CloudService.ccproj", "{97F77CF7-A13E-4441-8081-F941AC1B8BB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Infrastructure", "SFA.DAS.EmployerApprenticeshipsService.Infrastructure\SFA.DAS.EmployerPayments.Infrastructure.csproj", "{01AC2BC2-AC01-400F-AB8F-548DD5C0EE74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Infrastructure", "SFA.DAS.EmployerPayments.Infrastructure\SFA.DAS.EmployerPayments.Infrastructure.csproj", "{01AC2BC2-AC01-400F-AB8F-548DD5C0EE74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Domain", "SFA.DAS.EmployerApprenticeshipsService.Domain\SFA.DAS.EmployerPayments.Domain.csproj", "{EC415CDA-9294-4967-BD27-AA900985427D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Domain", "SFA.DAS.EmployerPayments.Domain\SFA.DAS.EmployerPayments.Domain.csproj", "{EC415CDA-9294-4967-BD27-AA900985427D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Application.UnitTests", "SFA.DAS.EmployerApprenticeshipsService.Application.UnitTests\SFA.DAS.EmployerPayments.Application.UnitTests.csproj", "{9DD77DF0-827E-4C14-B14B-B991BF26FD8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Application.UnitTests", "SFA.DAS.EmployerPayments.Application.UnitTests\SFA.DAS.EmployerPayments.Application.UnitTests.csproj", "{9DD77DF0-827E-4C14-B14B-B991BF26FD8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Application", "SFA.DAS.EmployerApprenticeshipsService.Application\SFA.DAS.EmployerPayments.Application.csproj", "{0226F97A-704E-49B0-A100-B75FEEC9C8AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Application", "SFA.DAS.EmployerPayments.Application\SFA.DAS.EmployerPayments.Application.csproj", "{0226F97A-704E-49B0-A100-B75FEEC9C8AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Infrastructure.UnitTests", "SFA.DAS.EAS.Infrastructure.UnitTests\SFA.DAS.EmployerPayments.Infrastructure.UnitTests.csproj", "{8A2A2059-CB81-4336-8D08-BDCB37901B96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Infrastructure.UnitTests", "SFA.DAS.EmployerPayments.Infrastructure.UnitTests\SFA.DAS.EmployerPayments.Infrastructure.UnitTests.csproj", "{8A2A2059-CB81-4336-8D08-BDCB37901B96}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PreReqs", "PreReqs", "{15DE899B-AD05-470D-B0F8-E5696141CA9A}"
 	ProjectSection(SolutionItems) = preProject
@@ -34,19 +34,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PreReqs", "PreReqs", "{15DE
 		localhost.pfx = localhost.pfx
 	EndProjectSection
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SFA.DAS.EmployerPayments.Database", "SFA.DAS.EAS.Employer_Financial.Database\SFA.DAS.EmployerPayments.Database.sqlproj", "{6C145D4A-CBA9-439C-984E-0A5953CBE04D}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SFA.DAS.EmployerPayments.Database", "SFA.DAS.EmployerPayments.Database\SFA.DAS.EmployerPayments.Database.sqlproj", "{6C145D4A-CBA9-439C-984E-0A5953CBE04D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.WebJob", "SFA.DAS.EAS.PaymentUpdater.WebJob\SFA.DAS.EmployerPayments.WebJob.csproj", "{09CAD527-1455-44F2-A857-14C695FDEE3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.WebJob", "SFA.DAS.EmployerPayments.PaymentUpdater.WebJob\SFA.DAS.EmployerPayments.WebJob.csproj", "{09CAD527-1455-44F2-A857-14C695FDEE3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.WebJob.UnitTests", "SFA.DAS.EAS.PaymentUpdater.WebJob.UnitTests\SFA.DAS.EmployerPayments.WebJob.UnitTests.csproj", "{1E6E4E4E-D876-4D0B-8672-85D385FE640E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.WebJob.UnitTests", "SFA.DAS.EmployerPayments.PaymentUpdater.WebJob.UnitTests\SFA.DAS.EmployerPayments.WebJob.UnitTests.csproj", "{1E6E4E4E-D876-4D0B-8672-85D385FE640E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Host.WebJob", "SFA.DAS.EAS.Host.WebJob\SFA.DAS.EmployerPayments.Host.WebJob.csproj", "{75D748C3-A999-4F0C-A910-F4C06C457EBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Host.WebJob", "SFA.DAS.EmployerPayments.Host.WebJob\SFA.DAS.EmployerPayments.Host.WebJob.csproj", "{75D748C3-A999-4F0C-A910-F4C06C457EBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Worker", "SFA.DAS.EAS.PaymentProvider.Worker\SFA.DAS.EmployerPayments.Worker.csproj", "{52069B5E-6A8D-413E-B4BD-A7C7C4FD2CCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Worker", "SFA.DAS.EmployerPayments.PaymentProvider.Worker\SFA.DAS.EmployerPayments.Worker.csproj", "{52069B5E-6A8D-413E-B4BD-A7C7C4FD2CCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Worker.UnitTests", "SFA.DAS.EAS.PaymentProvider.Worker.UnitTests\SFA.DAS.EmployerPayments.Worker.UnitTests.csproj", "{4FB1B694-7D97-4735-9978-81E827B8DBD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Worker.UnitTests", "SFA.DAS.EmployerPayments.PaymentProvider.Worker.UnitTests\SFA.DAS.EmployerPayments.Worker.UnitTests.csproj", "{4FB1B694-7D97-4735-9978-81E827B8DBD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Solution.UnitTests", "SFA.DAS.EAS.Solution.UnitTests\SFA.DAS.EmployerPayments.Solution.UnitTests.csproj", "{25AB0549-E867-4797-B7D3-FE8A7D6E17F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.EmployerPayments.Solution.UnitTests", "SFA.DAS.EmployerPayments.Solution.UnitTests\SFA.DAS.EmployerPayments.Solution.UnitTests.csproj", "{25AB0549-E867-4797-B7D3-FE8A7D6E17F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{BEFF50E9-EED9-4DD2-A5F3-A707DCD99A17}"
 EndProject
