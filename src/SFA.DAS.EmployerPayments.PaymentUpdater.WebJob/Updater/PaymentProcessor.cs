@@ -17,17 +17,13 @@ namespace SFA.DAS.EAS.PaymentUpdater.WebJob.Updater
 {
     public class PaymentProcessor : IPaymentProcessor
     {
-
-        [QueueName("employer_payments")]
-        public string refresh_payments { get; set; }
-
         private readonly IPaymentsEventsApiClient _paymentsEventsApiClient;
         private readonly IMediator _mediator;
         private readonly IMessagePublisher _publisher;
         private readonly ILog _logger;
         private readonly PaymentsApiClientConfiguration _configuration;
 
-
+        [ServiceBusConnectionKey("employer_payments")]
         public PaymentProcessor(IPaymentsEventsApiClient paymentsEventsApiClient, IMediator mediator, IMessagePublisher publisher, ILog logger, PaymentsApiClientConfiguration configuration)
         {
             _paymentsEventsApiClient = paymentsEventsApiClient;

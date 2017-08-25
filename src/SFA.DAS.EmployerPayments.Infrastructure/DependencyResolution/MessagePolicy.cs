@@ -38,34 +38,31 @@ namespace SFA.DAS.EmployerPayments.Infrastructure.DependencyResolution
 
             if (messagePublisher != null)
             {
-                var queueName = instance.SettableProperties()
-                                .FirstOrDefault(c=>c.CustomAttributes.FirstOrDefault(
-                                                    x=>x.AttributeType.Name == nameof(QueueNameAttribute)) != null);
+                var configurationService = new ConfigurationService(GetConfigurationRepository(), new ConfigurationOptions(_serviceName, environment, "1.0"));
 
-                if (queueName != null)
+                var config = configurationService.Get<T>();
+                if (string.IsNullOrEmpty(config.ServiceBusConnectionString))
                 {
-                    var configurationService = new ConfigurationService(GetConfigurationRepository(), new ConfigurationOptions(_serviceName, environment, "1.0"));
-
-                    var config = configurationService.Get<T>();
-                    if (string.IsNullOrEmpty(config.ServiceBusConnectionString))
-                    {
-                        var queueFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                        instance.Dependencies.AddForConstructorParameter(messagePublisher, new FileSystemMessageService(Path.Combine(queueFolder, queueName.Name)));
-                    }
-                    else
-                    {
-                        var serviceBusConnectionString = config.ServiceBusConnectionString;
-
-                        if (queueName.CustomAttributes?.FirstOrDefault()?.ConstructorArguments.FirstOrDefault().Value != null)
-                        {
-                            var connectionKey = queueName.CustomAttributes?.FirstOrDefault()?.ConstructorArguments.FirstOrDefault().Value.ToString();
-                            
-                            serviceBusConnectionString = string.IsNullOrWhiteSpace(connectionKey)? serviceBusConnectionString : config.ServiceBusConnectionStrings[connectionKey];
-                        }
-                        
-                        instance.Dependencies.AddForConstructorParameter(messagePublisher, new AzureServiceBusMessageService(serviceBusConnectionString, queueName.Name));
-                    }   
+                    var queueFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                    instance.Dependencies.AddForConstructorParameter(messagePublisher, new FileSystemMessageService(Path.Combine(queueFolder)));
                 }
+                else
+                {
+
+                    var sbconnectionKey = instance.Constructor.CustomAttributes.FirstOrDefault(x => x.AttributeType.Name == nameof(ServiceBusConnectionKeyAttribute))
+                                .ConstructorArguments.FirstOrDefault()
+                                .Value;
+
+                    var serviceBusConnectionString = config.ServiceBusConnectionString;
+
+                    if (sbconnectionKey != null)
+                    {
+                        serviceBusConnectionString = string.IsNullOrWhiteSpace(sbconnectionKey.ToString()) ? serviceBusConnectionString : config.ServiceBusConnectionStrings[sbconnectionKey.ToString()];
+                    }
+                        
+                    instance.Dependencies.AddForConstructorParameter(messagePublisher, new AzureServiceBusMessageService(serviceBusConnectionString));
+                }   
+                
             }
         }
 

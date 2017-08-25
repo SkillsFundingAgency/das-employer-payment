@@ -102,12 +102,6 @@ namespace SFA.DAS.EAS.PaymentProvider.Worker.UnitTests.Providers.PaymentDataProc
             //Assert
             fileSystemMessage.Verify(x=>x.CompleteAsync(),Times.Once);
         }
-
-        [Test]
-        public void ThenTheQueueNameIsSetToRefreshPayments()
-        {
-            //Act Assert
-            Assert.AreEqual("refresh_payments",nameof(_paymentDataProcessor.refresh_payments));
-        }
+        
     }
 }

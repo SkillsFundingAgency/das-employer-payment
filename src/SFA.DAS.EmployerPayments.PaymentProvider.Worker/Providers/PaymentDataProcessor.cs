@@ -10,12 +10,10 @@ namespace SFA.DAS.EmployerPayments.Worker.Providers
 {
     public class PaymentDataProcessor : MessageProcessor<PaymentProcessorQueueMessage>
     {
-        [QueueName("employer_payments")]
-        public string refresh_payments { get; set; }
-        
         private readonly IMediator _mediator;
         private readonly ILog _logger;
 
+        [ServiceBusConnectionKey("employer_payments")]
         public PaymentDataProcessor(IPollingMessageReceiver pollingMessageReceiver, IMediator mediator, ILog logger) : base(pollingMessageReceiver, logger)
         {
             _mediator = mediator;

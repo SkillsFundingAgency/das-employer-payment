@@ -151,6 +151,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\ServiceBusConnectionKeyAttribute.cs" />
     <Compile Include="Configuration\EmployerPaymentsConfiguration.cs" />
     <Compile Include="Data\Entities\Transaction\TransactionEntity.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
@@ -180,7 +181,6 @@
     <Compile Include="Models\Transaction\AggregationData.cs" />
     <Compile Include="Models\Transaction\AggregationLine.cs" />
     <Compile Include="Models\Transaction\AggregationLineItem.cs" />
-    <Compile Include="Attributes\QueueNameAttribute.cs" />
     <Compile Include="Configuration\AuditApiClientConfiguration.cs" />
     <Compile Include="Configuration\CommitmentsApiClientConfiguration.cs" />
     <Compile Include="Configuration\CompaniesHouseConfiguration.cs" />

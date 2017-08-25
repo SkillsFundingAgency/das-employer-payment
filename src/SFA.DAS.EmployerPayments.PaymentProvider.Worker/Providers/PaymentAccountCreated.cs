@@ -13,10 +13,8 @@ namespace SFA.DAS.EmployerPayments.Worker.Providers
     {
         private readonly ILog _log;
         private readonly IMediator _mediator;
-
-        [QueueName("employer_shared")]
-        public string account_created_message { get; set; }
-
+        
+        [ServiceBusConnectionKey("employer_shared")]
         public PaymentAccountCreated(IPollingMessageReceiver pollingMessageReceiver, ILog log, IMediator mediator) : base(pollingMessageReceiver, log)
         {
             _log = log;
