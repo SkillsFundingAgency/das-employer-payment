@@ -55,6 +55,7 @@ namespace SFA.DAS.EmployerPayments.Worker
             {
                 c.Policies.Add(new ConfigurationPolicy<EmployerPaymentsConfiguration>(ServiceName));
                 c.Policies.Add(new ConfigurationPolicy<PaymentsApiClientConfiguration>("SFA.DAS.PaymentsAPI"));
+                c.Policies.Add(new ConfigurationPolicy<ApprenticeshipInfoServiceConfiguration>("SFA.DAS.ApprenticeshipInfoServiceAPI"));
                 c.Policies.Add(new ConfigurationPolicy<CommitmentsApiClientConfiguration>("SFA.DAS.CommitmentsAPI"));
                 c.Policies.Add(new MessagePolicy<EmployerPaymentsConfiguration>(ServiceName));
                 c.Policies.Add(new ExecutionPolicyPolicy());
