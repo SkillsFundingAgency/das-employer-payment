@@ -16,7 +16,7 @@
   <NetworkConfiguration>
     <VirtualNetworkSite name="__vnet__" />
     <AddressAssignments>
-      <InstanceAddress roleName="SFA.DAS.EAS.PaymentProvider.Worker">
+      <InstanceAddress roleName="SFA.DAS.EmployerPayments.Worker">
         <Subnets>
           <Subnet name="__subnet__" />
         </Subnets>
