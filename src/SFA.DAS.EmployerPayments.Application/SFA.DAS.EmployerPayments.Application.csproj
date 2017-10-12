@@ -180,14 +180,6 @@
     <Compile Include="Queries\AccountTransactions\GetAccountProviderPayments\GetAccountProviderPaymentsByDateRangeQueryHandler.cs" />
     <Compile Include="Queries\AccountTransactions\GetAccountProviderPayments\GetAccountProviderPaymentsByDateRangeResponse.cs" />
     <Compile Include="Queries\AccountTransactions\GetAccountProviderPayments\GetAccountProviderPaymentsByDateRangeValidator.cs" />
-    <Compile Include="Queries\FindAccountProviderPayments\FindAccountProviderPaymentsHandler.cs" />
-    <Compile Include="Queries\FindAccountProviderPayments\FindAccountProviderPaymentsQuery.cs" />
-    <Compile Include="Queries\FindAccountProviderPayments\FindAccountProviderPaymentsQueryValidator.cs" />
-    <Compile Include="Queries\FindAccountProviderPayments\FindAccountProviderPaymentsResponse.cs" />
-    <Compile Include="Queries\FindAccountCoursePayments\FindAccountCoursePaymentsQuery.cs" />
-    <Compile Include="Queries\FindAccountCoursePayments\FindAccountCoursePaymentsQueryHandler.cs" />
-    <Compile Include="Queries\FindAccountCoursePayments\FindAccountCoursePaymentsQueryValidator.cs" />
-    <Compile Include="Queries\FindAccountCoursePayments\FindAccountCoursePaymentsResponse.cs" />
     <Compile Include="Queries\GetAccounts\GetAccountsQuery.cs" />
     <Compile Include="Queries\GetAccounts\GetAccountsQueryHandler.cs" />
     <Compile Include="Queries\GetAccounts\GetAccountsResponse.cs" />
