@@ -233,7 +233,6 @@
     <Compile Include="Services\AzureServiceBase.cs" />
     <Compile Include="Services\CurrentDateTime.cs" />
     <Compile Include="Services\DasLevyService.cs" />
-    <Compile Include="Services\HashingService.cs" />
     <Compile Include="Services\HmrcDateService.cs" />
     <Compile Include="Services\PaymentService.cs" />
   </ItemGroup>
